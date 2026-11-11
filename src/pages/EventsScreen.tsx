@@ -102,11 +102,10 @@ export const EventsScreen: React.FC = () => {
 
                   <button
                     onClick={() => rsvpEvent(event.id)}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                      rsvpd
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${rsvpd
                         ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
                         : 'bg-primary text-primary-foreground shadow-md hover:bg-primary-hover active:scale-95'
-                    }`}
+                      }`}
                   >
                     {rsvpd ? (
                       <>

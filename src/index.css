@@ -7,61 +7,67 @@
    ========================================================================== */
 
 :root {
-  /* --- Brand Color Palette (Avalon Music Gold & Deep Luxury Slate) --- */
-  --primary: #f5a623;
-  --primary-hover: #ffb84d;
-  --primary-foreground: #090d14;
-  --primary-glow: rgba(245, 166, 35, 0.22);
-  --primary-muted: rgba(245, 166, 35, 0.12);
+  /* --- Brand Color Palette (Spotify Monochrome White & Deep Obsidian Canvas) --- */
+  --primary: #ffffff;
+  --primary-hover: #e5e5e5;
+  --primary-foreground: #000000;
+  --primary-glow: rgba(255, 255, 255, 0.22);
+  --primary-muted: rgba(255, 255, 255, 0.12);
 
-  --secondary: #172033;
-  --secondary-hover: #1f2c45;
-  --secondary-foreground: #f8fafc;
+  /* Spotify Signature Green Brand Accent */
+  --spotify-green: #1db954;
+  --spotify-green-hover: #1ed760;
+  --spotify-green-foreground: #000000;
+  --spotify-green-glow: rgba(29, 185, 84, 0.32);
 
-  --background: #090d14;
-  --background-secondary: #0f1624;
-  --foreground: #f8fafc;
+  --secondary: #242424;
+  --secondary-hover: #2e2e2e;
+  --secondary-foreground: #ffffff;
 
-  --card: #131b2c;
-  --card-hover: #192339;
-  --card-foreground: #f8fafc;
+  --background: #121212;
+  --background-secondary: #181818;
+  --foreground: #ffffff;
 
-  --popover: #131b2c;
-  --popover-foreground: #f8fafc;
+  --card: #181818;
+  --card-hover: #242424;
+  --card-foreground: #ffffff;
 
-  --muted: #1c263c;
-  --muted-foreground: #94a3b8;
-  --muted-accent: #64748b;
+  --popover: #242424;
+  --popover-foreground: #ffffff;
 
-  --accent: #f5a623;
-  --accent-foreground: #090d14;
+  --muted: #1e1e1e;
+  --muted-foreground: #b3b3b3;
+  --muted-accent: #727272;
+
+  --accent: #ffffff;
+  --accent-foreground: #000000;
 
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  --border: #23314d;
-  --border-muted: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(245, 166, 35, 0.35);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-muted: rgba(255, 255, 255, 0.05);
+  --border-highlight: rgba(255, 255, 255, 0.25);
 
-  --input: #131b2c;
-  --input-focus: #1c263c;
-  --ring: #f5a623;
+  --input: #242424;
+  --input-focus: #2e2e2e;
+  --ring: #ffffff;
 
   /* --- Spacing & Padding Tokens --- */
-  --spacing-screen-x: 1.25rem;
-  --spacing-screen-y: 1.25rem;
-  --spacing-card-p: 1.15rem;
+  --spacing-screen-x: 1.15rem;
+  --spacing-screen-y: 1.15rem;
+  --spacing-card-p: 1rem;
   --spacing-nav-h: 4.25rem;
   --spacing-header-h: 4rem;
 
-  /* --- Roundness / Border Radius Tokens (Sharp modern styling) --- */
-  --radius-xs: 0.125rem;  /* 2px - micro chips & sharp badges */
-  --radius-sm: 0.1875rem; /* 3px - subtle rounded corners */
-  --radius-md: 0.25rem;   /* 4px - inputs, small controls, chips */
-  --radius-lg: 0.375rem;  /* 6px - buttons, icon containers, inner cards */
-  --radius-xl: 0.5rem;    /* 8px - square cards, action buttons, dropdowns */
-  --radius-2xl: 0.625rem; /* 10px - main square cards, media items */
-  --radius-3xl: 0.75rem;  /* 12px - hero cards, modal sheets, containers */
+  /* --- Roundness / Border Radius Tokens (Sharp Spotify Geometry) --- */
+  --radius-xs: 0.125rem;  /* 2px */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.25rem;   /* 4px */
+  --radius-lg: 0.375rem;  /* 6px */
+  --radius-xl: 0.5rem;    /* 8px */
+  --radius-2xl: 0.5rem;   /* 8px */
+  --radius-3xl: 0.75rem;  /* 12px */
   --radius-pill: 9999px;
 
   /* --- Typography Tokens --- */
@@ -81,6 +87,11 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-glow: var(--primary-glow);
   --color-primary-muted: var(--primary-muted);
+
+  --color-spotify-green: var(--spotify-green);
+  --color-spotify-green-hover: var(--spotify-green-hover);
+  --color-spotify-green-foreground: var(--spotify-green-foreground);
+  --color-spotify-green-glow: var(--spotify-green-glow);
 
   --color-secondary: var(--secondary);
   --color-secondary-hover: var(--secondary-hover);
@@ -231,25 +242,25 @@ main, .scroll-touch {
 
 /* Glassmorphism Classes configured from tokens */
 .glass-panel {
-  background: rgba(19, 27, 44, 0.78);
+  background: rgba(24, 24, 24, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-muted);
+  border: 1px solid var(--border);
 }
 
 .glass-panel-elevated {
-  background: rgba(23, 32, 51, 0.9);
+  background: rgba(30, 30, 30, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-highlight);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-glow);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-glow);
 }
 
 .glass-nav {
-  background: rgba(9, 13, 20, 0.85);
+  background: rgba(18, 18, 18, 0.92);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 /* Master UI Tokens for consistent paddings and buttons */

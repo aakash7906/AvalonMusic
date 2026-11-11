@@ -19,24 +19,16 @@ export const AuthScreen: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) {
-      showToast('Please enter your email', 'warning');
-      return;
-    }
-    login(email, role);
+    login(email.trim() || 'client@avalonmusic.com', role);
     navigate('/');
   };
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !name) {
-      showToast('Please provide your name and email', 'warning');
-      return;
-    }
     signup({
-      name,
-      email,
-      phone: phone || '(832) 723-8886',
+      name: name.trim() || 'Valued Client',
+      email: email.trim() || 'client@avalonmusic.com',
+      phone: phone.trim() || '(832) 723-8886',
       role,
       eventDate: 'Upcoming 2027'
     });
@@ -45,11 +37,7 @@ export const AuthScreen: React.FC = () => {
 
   const handleForgot = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) {
-      showToast('Please enter your email address', 'warning');
-      return;
-    }
-    showToast(`Password reset link sent to ${email}`, 'success');
+    showToast(`Password reset link sent to ${email.trim() || 'client@avalonmusic.com'}`, 'success');
     setMode('login');
   };
 
@@ -81,9 +69,9 @@ export const AuthScreen: React.FC = () => {
             <button
               type="button"
               onClick={() => setMode('login')}
-              className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all ${
+              className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
                 mode === 'login'
-                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  ? 'bg-spotify-green text-black shadow-md'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
@@ -92,9 +80,9 @@ export const AuthScreen: React.FC = () => {
             <button
               type="button"
               onClick={() => setMode('signup')}
-              className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all ${
+              className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
                 mode === 'signup'
-                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  ? 'bg-spotify-green text-black shadow-md'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
@@ -114,7 +102,6 @@ export const AuthScreen: React.FC = () => {
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                   type="email"
-                  required
                   placeholder="your.email@example.com"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
@@ -140,7 +127,6 @@ export const AuthScreen: React.FC = () => {
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  required
                   placeholder="••••••••••••"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
@@ -158,7 +144,7 @@ export const AuthScreen: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full py-3.5 px-6 rounded-2xl bg-primary text-primary-foreground font-bold text-xs shadow-[0_4px_20px_var(--primary-glow)] hover:bg-primary-hover active:scale-95 transition-all flex items-center justify-center gap-2 mt-2"
+              className="w-full py-3.5 px-6 rounded-2xl bg-secondary-foreground text-black font-bold text-xs shadow-[0_4px_20px_var(--spotify-green-glow)] hover:bg-spotify-green-hover active:scale-95 transition-all flex items-center justify-center gap-2 mt-2"
             >
               <span>Sign In to Avalon</span>
               <ArrowRight className="w-4 h-4" />
@@ -177,7 +163,6 @@ export const AuthScreen: React.FC = () => {
                 <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                   type="text"
-                  required
                   placeholder="e.g. Haley Hughes"
                   value={name}
                   onChange={e => setName(e.target.value)}
@@ -194,7 +179,6 @@ export const AuthScreen: React.FC = () => {
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                   type="email"
-                  required
                   placeholder="name@company.com"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
@@ -243,7 +227,6 @@ export const AuthScreen: React.FC = () => {
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                   type="password"
-                  required
                   placeholder="Min 6 characters"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
@@ -254,9 +237,9 @@ export const AuthScreen: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full py-3 px-6 rounded-2xl bg-primary text-primary-foreground font-bold text-xs shadow-[0_4px_20px_var(--primary-glow)] hover:bg-primary-hover active:scale-95 transition-all flex items-center justify-center gap-2 mt-3"
+              className="w-full py-3 px-6 rounded-2xl bg-secondary-foreground text-black font-bold text-xs shadow-[0_4px_20px_var(--spotify-green-glow)] hover:bg-spotify-green-hover active:scale-95 transition-all flex items-center justify-center gap-2 mt-3"
             >
-              <span>Register & Access Concierge</span>
+              <span>Register & Access </span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
@@ -277,7 +260,6 @@ export const AuthScreen: React.FC = () => {
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                   type="email"
-                  required
                   placeholder="your.email@example.com"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
@@ -288,7 +270,7 @@ export const AuthScreen: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full py-3.5 px-6 rounded-2xl bg-primary text-primary-foreground font-bold text-xs shadow-md hover:bg-primary-hover active:scale-95 transition-all"
+              className="w-full py-3.5 px-6 rounded-2xl bg-spotify-green text-black font-bold text-xs shadow-md hover:bg-spotify-green-hover active:scale-95 transition-all"
             >
               Send Reset Link
             </button>

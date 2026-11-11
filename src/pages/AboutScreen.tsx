@@ -1,13 +1,13 @@
 import React from 'react';
-import { 
-  ShieldCheck, 
-  Award, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  CheckCircle2, 
-  Heart, 
-  Users, 
+import {
+  ShieldCheck,
+  Award,
+  MapPin,
+  Phone,
+  Mail,
+  CheckCircle2,
+  Heart,
+  Users,
   Music,
   ArrowRight
 } from 'lucide-react';

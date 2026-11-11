@@ -67,7 +67,7 @@ export const FaqScreen: React.FC = () => {
   const filtered = FAQS.filter(item => {
     const matchesCat = selectedCat === 'All' || item.category === selectedCat;
     const matchesQuery = item.question.toLowerCase().includes(search.toLowerCase()) ||
-                         item.answer.toLowerCase().includes(search.toLowerCase());
+      item.answer.toLowerCase().includes(search.toLowerCase());
     return matchesCat && matchesQuery;
   });
 
@@ -105,11 +105,10 @@ export const FaqScreen: React.FC = () => {
           <button
             key={cat}
             onClick={() => setSelectedCat(cat)}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
-              selectedCat === cat
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${selectedCat === cat
                 ? 'bg-primary text-primary-foreground shadow-md'
                 : 'bg-card text-muted-foreground hover:text-foreground border border-border'
-            }`}
+              }`}
           >
             {cat}
           </button>

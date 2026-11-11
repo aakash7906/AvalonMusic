@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { 
-  CalendarCheck, 
-  MapPin, 
-  Users, 
-  Clock, 
-  DollarSign, 
-  CheckCircle2, 
-  ArrowRight, 
-  PhoneCall, 
-  ShieldCheck, 
-  Send 
+import {
+  CalendarCheck,
+  MapPin,
+  Users,
+  Clock,
+  DollarSign,
+  CheckCircle2,
+  ArrowRight,
+  PhoneCall,
+  ShieldCheck,
+  Send
 } from 'lucide-react';
 import { AVALON_BANDS } from '../data/mockData';
 import { useApp } from '../context/AppContext';
@@ -26,9 +26,9 @@ export const BookingScreen: React.FC = () => {
   // Form State
   const [eventType, setEventType] = useState(
     preselectedEvent === 'weddings' ? 'Wedding Reception' :
-    preselectedEvent === 'corporate' ? 'Corporate Gala' :
-    preselectedEvent === 'private' ? 'Private Celebration' :
-    preselectedEvent === 'djs' ? 'DJ & MC Service' : 'Wedding Reception'
+      preselectedEvent === 'corporate' ? 'Corporate Gala' :
+        preselectedEvent === 'private' ? 'Private Celebration' :
+          preselectedEvent === 'djs' ? 'DJ & MC Service' : 'Wedding Reception'
   );
 
   const [talentChoice, setTalentChoice] = useState(
@@ -182,11 +182,10 @@ export const BookingScreen: React.FC = () => {
                   key={type}
                   type="button"
                   onClick={() => setEventType(type)}
-                  className={`p-2.5 sm:p-3 rounded-xl border text-xs sm:text-sm font-semibold text-left transition-all ${
-                    eventType === type
+                  className={`p-2.5 sm:p-3 rounded-xl border text-xs sm:text-sm font-semibold text-left transition-all ${eventType === type
                       ? 'bg-primary text-primary-foreground border-primary shadow-sm'
                       : 'bg-card border-border text-muted-foreground hover:text-foreground'
-                  }`}
+                    }`}
                 >
                   {type}
                 </button>

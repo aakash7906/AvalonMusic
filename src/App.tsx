@@ -5,11 +5,9 @@ import { AudioProvider } from './context/AudioContext';
 import { DesktopMobileFrame } from './components/layout/DesktopMobileFrame';
 import { TopHeader } from './components/layout/TopHeader';
 import { BottomNavigation } from './components/layout/BottomNavigation';
-import { MiniPlayer } from './components/player/MiniPlayer';
 import { FullScreenPlayer } from './components/player/FullScreenPlayer';
 import { YouTubeModal } from './components/video/YouTubeModal';
 import { Toast } from './components/ui/Toast';
-import { QuickSearchModal } from './components/search/QuickSearchModal';
 
 import { SplashScreen } from './pages/SplashScreen';
 import { OnboardingScreen } from './pages/OnboardingScreen';
@@ -29,7 +27,6 @@ const AppContent: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [selectedBand, setSelectedBand] = useState<Band | null>(null);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   // On page refresh / initial app load, always start from the splash screen
   useEffect(() => {
@@ -46,8 +43,8 @@ const AppContent: React.FC = () => {
 
       {/* Main App Container: Fixed Height Flex Column */}
       <div className="w-full h-full flex flex-col relative overflow-hidden bg-background min-w-0">
-        {/* Top Header (Fixed at top, never scrolls) */}
-        {!isNavHidden && <TopHeader onOpenSearch={() => setIsSearchOpen(true)} />}
+        {/* Top Header with Inline Search (Fixed at top, never scrolls) */}
+        {!isNavHidden && <TopHeader onSelectBand={setSelectedBand} />}
 
         {/* Scrollable Content Viewport (Zero scrollbar, smooth touch inertial scrolling) */}
         <main className="flex-1 w-full overflow-y-auto overflow-x-hidden relative min-w-0 overscroll-contain no-scrollbar scroll-touch">
@@ -66,13 +63,12 @@ const AppContent: React.FC = () => {
           </Routes>
         </main>
 
-        {/* Fixed Bottom Dock (Never scrolls with content/scrollbar!) */}
+        {/* Floating Spotify Bottom Navigation (Content smoothly scrolls underneath) */}
         {!isNavHidden && (
-          <div className="shrink-0 w-full z-30 select-none pb-3 pt-1 bg-gradient-to-t from-background via-background/95 to-transparent">
-            {/* Persistent Mini Audio Player */}
-            <MiniPlayer />
-            {/* Floating Capsule Bottom Navigation */}
-            <BottomNavigation />
+          <div className="absolute bottom-0 left-0 right-0 z-30 select-none pointer-events-none flex flex-col justify-end">
+            <div className="w-full pointer-events-auto">
+              <BottomNavigation />
+            </div>
           </div>
         )}
       </div>
@@ -80,11 +76,6 @@ const AppContent: React.FC = () => {
       {/* Modals & Overlays */}
       <FullScreenPlayer />
       <YouTubeModal />
-      <QuickSearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        onSelectBand={setSelectedBand}
-      />
       <BandDetailModal band={selectedBand} onClose={() => setSelectedBand(null)} />
     </DesktopMobileFrame>
   );

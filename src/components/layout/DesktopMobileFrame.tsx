@@ -60,10 +60,10 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
           <div className="absolute top-[-10%] left-[20%] w-[550px] h-[550px] rounded-full bg-primary/10 blur-[130px]" />
           <div className="absolute bottom-[-10%] right-[15%] w-[600px] h-[600px] rounded-full bg-primary/5 blur-[150px]" />
           <div 
-            className="absolute inset-0 opacity-[0.03]" 
+            className="absolute inset-0 opacity-[0.05] text-foreground" 
             style={{ 
-              backgroundImage: 'radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)', 
-              backgroundSize: '36px 36px' 
+              backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', 
+              backgroundSize: '32px 32px' 
             }} 
           />
         </div>
@@ -128,7 +128,7 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
 
             {/* Bottom Home Indicator Pill */}
             <div className="w-full py-1.5 flex items-center justify-center bg-background select-none shrink-0 border-t border-border/30">
-              <div className="w-32 h-1 bg-white/20 rounded-full hover:bg-white/40 transition-colors" />
+              <div className="w-32 h-1 bg-foreground/20 rounded-full hover:bg-foreground/40 transition-colors" />
             </div>
           </div>
         </div>

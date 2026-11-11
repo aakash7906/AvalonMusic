@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  User, 
-  Heart, 
-  CalendarCheck, 
-  Phone, 
-  Mail, 
-  ShieldCheck, 
-  Settings, 
-  LogOut, 
-  ChevronRight, 
-  Play, 
-  Smartphone, 
-  CheckCircle2, 
+import {
+  User,
+  Heart,
+  CalendarCheck,
+  Phone,
+  Mail,
+  ShieldCheck,
+  Settings,
+  LogOut,
+  ChevronRight,
+  Play,
+  Smartphone,
+  CheckCircle2,
   Trash2,
   HelpCircle,
   Info,
@@ -86,33 +86,30 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
       <div className="flex bg-secondary/80 p-1 rounded-2xl border border-border sm:max-w-lg">
         <button
           onClick={() => setActiveTab('favorites')}
-          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-            activeTab === 'favorites'
+          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${activeTab === 'favorites'
               ? 'bg-primary text-primary-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
-          }`}
+            }`}
         >
           <Heart className="w-3.5 h-3.5" />
           <span>Saved ({favoriteBands.length + favoriteTracks.length})</span>
         </button>
         <button
           onClick={() => setActiveTab('inquiries')}
-          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-            activeTab === 'inquiries'
+          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${activeTab === 'inquiries'
               ? 'bg-primary text-primary-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
-          }`}
+            }`}
         >
           <CalendarCheck className="w-3.5 h-3.5" />
           <span>Quotes ({inquiries.length})</span>
         </button>
         <button
           onClick={() => setActiveTab('settings')}
-          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-            activeTab === 'settings'
+          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${activeTab === 'settings'
               ? 'bg-primary text-primary-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
-          }`}
+            }`}
         >
           <Settings className="w-3.5 h-3.5" />
           <span>Settings</span>
@@ -256,13 +253,12 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
                         Ref #{item.id}
                       </span>
                       <span
-                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                          item.status === 'Confirmed'
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${item.status === 'Confirmed'
                             ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
                             : item.status === 'Reviewing'
-                            ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                            : 'bg-blue-500/20 text-blue-400'
-                        }`}
+                              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                              : 'bg-blue-500/20 text-blue-400'
+                          }`}
                       >
                         ● {item.status}
                       </span>
@@ -355,11 +351,10 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
                 <button
                   key={skin}
                   onClick={() => updateFrameSettings({ skin })}
-                  className={`p-2.5 rounded-xl border text-xs font-semibold capitalize text-left transition-all ${
-                    frameSettings.skin === skin
+                  className={`p-2.5 rounded-xl border text-xs font-semibold capitalize text-left transition-all ${frameSettings.skin === skin
                       ? 'bg-primary text-primary-foreground border-primary shadow-sm'
                       : 'bg-secondary border-border text-muted-foreground hover:text-foreground'
-                  }`}
+                    }`}
                 >
                   {skin} Edition
                 </button>

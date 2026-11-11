@@ -46,7 +46,7 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col justify-end sm:items-center sm:justify-center p-0 sm:p-4 animate-in fade-in duration-200">
       <div 
-        className="w-full sm:max-w-xl md:max-w-2xl max-h-[92vh] bg-background border border-border rounded-t-[32px] sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl relative"
+        className="w-full sm:max-w-xl md:max-w-2xl max-h-[92vh] bg-background border border-border rounded-t-xl sm:rounded-lg overflow-hidden flex flex-col shadow-2xl relative"
         onClick={e => e.stopPropagation()}
       >
         {/* Sticky Top Bar Controls */}
@@ -124,7 +124,7 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
 
           <div className="p-5 space-y-6">
             {/* Quick Stats Grid */}
-            <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-secondary/60 border border-border text-center">
+            <div className="grid grid-cols-3 gap-2 p-3 rounded-md bg-secondary/60 border border-border text-center">
               <div>
                 <span className="text-[10px] uppercase text-muted-foreground font-semibold">Starting Price</span>
                 <p className="text-xs font-bold text-foreground mt-0.5">{band.startingPrice}</p>
@@ -153,7 +153,7 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
                 <h3 className="text-sm font-bold font-display text-foreground">Live Video Showcase</h3>
                 <div 
                   onClick={() => setActiveVideoId(band.youtubeVideoId)}
-                  className="relative aspect-video rounded-2xl overflow-hidden border border-border cursor-pointer group shadow-lg"
+                  className="relative aspect-video rounded-md overflow-hidden border border-border cursor-pointer group shadow-lg"
                 >
                   <img
                     src={`https://img.youtube.com/vi/${band.youtubeVideoId}/hqdefault.jpg`}
@@ -183,10 +183,10 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
                     <div
                       key={track.id}
                       onClick={() => playTrack(track)}
-                      className="p-3 rounded-2xl bg-secondary/50 border border-border flex items-center justify-between cursor-pointer hover:border-primary/50 transition-all"
+                      className="p-3 rounded-md bg-secondary/50 border border-border flex items-center justify-between cursor-pointer hover:border-primary/50 transition-all"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-primary/20 text-primary flex items-center justify-center">
+                        <div className="w-9 h-9 rounded-sm bg-primary/20 text-primary flex items-center justify-center">
                           {isThisPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
                         </div>
                         <div>
@@ -221,7 +221,7 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
                 {band.repertoire.map((rep, idx) => (
                   <span
                     key={idx}
-                    className="px-2.5 py-1 rounded-xl bg-secondary/80 text-[11px] text-foreground border border-border font-medium"
+                    className="px-2.5 py-1 rounded-sm bg-secondary text-[11px] text-foreground border border-border font-medium"
                   >
                     {rep}
                   </span>
@@ -231,17 +231,17 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
           </div>
         </div>
 
-        {/* Fixed Bottom Booking Bar */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur-md border-t border-border flex items-center justify-between gap-3">
+        {/* Fixed Bottom Booking Bar (BookMyShow Tiered Pricing & CTA) */}
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-[#181818]/95 backdrop-blur-md border-t border-border flex items-center justify-between gap-3">
           <div>
             <span className="text-[10px] text-muted-foreground uppercase font-semibold">Starting Rate</span>
-            <p className="text-base font-bold text-foreground">{band.startingPrice}</p>
+            <p className="text-sm sm:text-base font-bold text-primary">{band.startingPrice}</p>
           </div>
 
           <div className="flex items-center gap-2">
             <a
               href="tel:8327238886"
-              className="p-3 rounded-2xl bg-secondary text-primary border border-border hover:bg-secondary-hover transition-colors"
+              className="p-2.5 rounded-sm bg-secondary text-primary border border-border hover:bg-secondary-hover transition-colors"
               title="Call Avalon Music"
             >
               <Phone className="w-4 h-4" />
@@ -249,10 +249,10 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
 
             <button
               onClick={handleBook}
-              className="py-3 px-6 rounded-2xl bg-primary text-primary-foreground font-bold text-xs shadow-lg hover:bg-primary-hover active:scale-95 transition-all flex items-center gap-2"
+              className="py-2.5 px-5 rounded-sm bg-primary text-primary-foreground font-bold text-xs shadow-lg hover:bg-primary-hover active:scale-95 transition-all flex items-center gap-1.5"
             >
               <CalendarCheck className="w-4 h-4" />
-              <span>Request Date Quote</span>
+              <span>Request Quote</span>
             </button>
           </div>
         </div>

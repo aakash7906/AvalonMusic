@@ -3,13 +3,13 @@ import { useAudio } from '../../context/AudioContext';
 import { Play, Pause, SkipForward, Video, Maximize2 } from 'lucide-react';
 
 export const MiniPlayer: React.FC = () => {
-  const { 
-    currentTrack, 
-    isPlaying, 
-    togglePlay, 
-    nextTrack, 
-    currentTime, 
-    duration, 
+  const {
+    currentTrack,
+    isPlaying,
+    togglePlay,
+    nextTrack,
+    currentTime,
+    duration,
     setIsExpanded,
     setActiveVideoId
   } = useAudio();
@@ -19,17 +19,17 @@ export const MiniPlayer: React.FC = () => {
   const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <aside 
+    <aside
       aria-label="Audio player preview"
       className="w-full px-3 mb-1.5 select-none shrink-0 min-w-0"
     >
-      <div 
+      <div
         onClick={() => setIsExpanded(true)}
-        className="w-full max-w-[420px] sm:max-w-lg md:max-w-xl mx-auto glass-panel-elevated rounded-2xl p-2 sm:p-2.5 flex items-center justify-between shadow-2xl cursor-pointer hover:border-primary/50 transition-all relative overflow-hidden min-w-0"
+        className="w-full max-w-[420px] sm:max-w-lg md:max-w-xl mx-auto bg-[#242424]/95 backdrop-blur-xl border border-white/10 rounded-md p-2 flex items-center justify-between shadow-2xl cursor-pointer hover:border-primary/50 transition-all relative overflow-hidden min-w-0"
       >
-        {/* Subtle top progress bar */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-secondary">
-          <div 
+        {/* Subtle top progress bar (Spotify scrub line) */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-white/10">
+          <div
             className="h-full bg-primary transition-all duration-200"
             style={{ width: `${progressPercent}%` }}
           />
@@ -37,9 +37,9 @@ export const MiniPlayer: React.FC = () => {
 
         {/* Left: Thumbnail & Song Title */}
         <div className="flex items-center gap-2.5 min-w-0 pr-2">
-          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl overflow-hidden shrink-0 border border-border shadow-md">
-            <img 
-              src={currentTrack.coverUrl} 
+          <div className="relative w-10 h-10 rounded-sm overflow-hidden shrink-0 border border-white/10 shadow-sm">
+            <img
+              src={currentTrack.coverUrl}
               alt={currentTrack.title}
               className={`w-full h-full object-cover ${isPlaying ? 'scale-105 transition-transform duration-700' : ''}`}
             />
@@ -55,11 +55,11 @@ export const MiniPlayer: React.FC = () => {
           </div>
 
           <div className="min-w-0">
-            <h4 className="text-xs sm:text-sm font-bold text-foreground truncate flex items-center gap-1.5">
+            <h4 className="text-xs font-bold text-white truncate flex items-center gap-1.5">
               <span>{currentTrack.title}</span>
             </h4>
-            <p className="text-[10px] sm:text-xs text-muted-foreground truncate">
-              {currentTrack.artist} • <span className="text-primary/90">{currentTrack.genre}</span>
+            <p className="text-[10px] text-muted-foreground truncate">
+              {currentTrack.artist} • <span className="text-primary">{currentTrack.genre}</span>
             </p>
           </div>
         </div>
@@ -70,7 +70,7 @@ export const MiniPlayer: React.FC = () => {
             <button
               onClick={() => setActiveVideoId(currentTrack.youtubeId || null)}
               title="Watch Live Video"
-              className="p-1.5 rounded-xl bg-secondary/80 hover:bg-secondary text-primary transition-all active:scale-95"
+              className="p-1.5 rounded-full text-muted-foreground hover:text-red-400 transition-colors"
             >
               <Video className="w-3.5 h-3.5" />
             </button>
@@ -78,21 +78,24 @@ export const MiniPlayer: React.FC = () => {
 
           <button
             onClick={togglePlay}
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-md active:scale-90 transition-transform"
+            className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-md active:scale-90 transition-transform"
+            aria-label={isPlaying ? 'Pause' : 'Play'}
           >
-            {isPlaying ? <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" /> : <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current ml-0.5" />}
+            {isPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current ml-0.5" />}
           </button>
 
           <button
             onClick={nextTrack}
-            className="p-1.5 rounded-xl text-muted-foreground hover:text-foreground transition-all active:scale-95"
+            className="p-1.5 rounded-full text-muted-foreground hover:text-white transition-all active:scale-95"
+            aria-label="Next track"
           >
-            <SkipForward className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <SkipForward className="w-3.5 h-3.5" />
           </button>
 
           <button
             onClick={() => setIsExpanded(true)}
-            className="p-1.5 rounded-xl text-muted-foreground hover:text-foreground hidden sm:block"
+            className="p-1.5 rounded-full text-muted-foreground hover:text-white hidden sm:block"
+            aria-label="Expand player"
           >
             <Maximize2 className="w-3.5 h-3.5" />
           </button>

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { 
-  Search, 
-  Star, 
-  Users, 
-  Heart, 
-  Play, 
-  Pause, 
-  Filter, 
-  ChevronRight, 
-  CheckCircle2, 
-  CalendarCheck 
+import {
+  Search,
+  Star,
+  Users,
+  Heart,
+  Play,
+  Pause,
+  Filter,
+  ChevronRight,
+  CheckCircle2,
+  CalendarCheck
 } from 'lucide-react';
 import { AVALON_BANDS, GENRE_CATEGORIES } from '../data/mockData';
 import { Band } from '../types';
@@ -32,7 +32,7 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
 
   const filteredBands = AVALON_BANDS.filter(band => {
     const matchesGenre = selectedGenre === 'All' || band.genre.toLowerCase().includes(selectedGenre.toLowerCase());
-    const matchesSearch = 
+    const matchesSearch =
       band.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       band.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
       band.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -89,11 +89,10 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
           <button
             key={genre}
             onClick={() => setSelectedGenre(genre)}
-            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
-              selectedGenre === genre
+            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${selectedGenre === genre
                 ? 'bg-primary text-primary-foreground shadow-md'
                 : 'bg-card text-muted-foreground hover:text-foreground border border-border'
-            }`}
+              }`}
           >
             {genre}
           </button>
@@ -136,9 +135,8 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
                     e.stopPropagation();
                     toggleFavorite(band.id);
                   }}
-                  className={`absolute top-3 right-3 p-2 rounded-full glass-panel transition-transform active:scale-90 ${
-                    isFav ? 'text-primary' : 'text-white/80 hover:text-white'
-                  }`}
+                  className={`absolute top-3 right-3 p-2 rounded-full glass-panel transition-transform active:scale-90 ${isFav ? 'text-primary' : 'text-white/80 hover:text-white'
+                    }`}
                 >
                   <Heart className={`w-4 h-4 ${isFav ? 'fill-current' : ''}`} />
                 </button>
