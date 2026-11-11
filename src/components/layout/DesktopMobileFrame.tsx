@@ -122,7 +122,7 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
             </header>
 
             {/* Inner App Content: Fills remaining height, contains fixed top/bottom and scrollable body */}
-            <div className="flex-1 w-full overflow-hidden relative flex flex-col bg-background min-w-0">
+            <div className="flex-1 w-full overflow-hidden relative flex flex-col bg-background min-w-0 mobile-frame-view">
               {children}
             </div>
 

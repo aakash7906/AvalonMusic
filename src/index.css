@@ -212,6 +212,160 @@ main, .scroll-touch {
   }
 }
 
+/* ==========================================================================
+   DESKTOP MOBILE SIMULATOR: PURE MOBILE DISPLAY ENFORCEMENT
+   Inside .desktop-only-frame .mobile-frame-view, enforce true mobile styling
+   so window-based Tailwind media queries (sm:, md:) do not stretch or break
+   layouts inside the 412px phone simulator shell.
+   ========================================================================== */
+.mobile-frame-view .sm\:grid-cols-3 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.mobile-frame-view .sm\:grid-cols-4 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.mobile-frame-view .sm\:grid-cols-2 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+/* Flex layout overrides */
+.mobile-frame-view .sm\:flex-row {
+  flex-direction: column !important;
+}
+
+.mobile-frame-view .sm\:items-center {
+  align-items: flex-start !important;
+}
+
+.mobile-frame-view .sm\:w-auto {
+  width: 100% !important;
+}
+
+.mobile-frame-view .sm\:flex-initial {
+  flex: 1 1 0% !important;
+}
+
+/* Paddings & Spacing overrides */
+.mobile-frame-view .sm\:px-6 {
+  padding-left: 0.875rem !important;
+  padding-right: 0.875rem !important;
+}
+
+.mobile-frame-view .sm\:py-2\.5 {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.mobile-frame-view .sm\:py-3 {
+  padding-top: 0.625rem !important;
+  padding-bottom: 0.625rem !important;
+}
+
+.mobile-frame-view .sm\:p-5,
+.mobile-frame-view .sm\:p-6 {
+  padding: 1rem !important;
+}
+
+.mobile-frame-view .sm\:gap-4 {
+  gap: 0.75rem !important;
+}
+
+.mobile-frame-view .sm\:gap-3 {
+  gap: 0.5rem !important;
+}
+
+.mobile-frame-view .sm\:gap-2\.5 {
+  gap: 0.5rem !important;
+}
+
+/* Typography overrides for compact phone screen */
+.mobile-frame-view .sm\:text-3xl {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
+.mobile-frame-view .sm\:text-2xl {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+.mobile-frame-view .sm\:text-xl {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+.mobile-frame-view .sm\:text-lg {
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+}
+
+.mobile-frame-view .sm\:text-sm {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+.mobile-frame-view .sm\:text-\[11px\] {
+  font-size: 10px !important;
+  line-height: 14px !important;
+}
+
+/* Specific elements & icons */
+.mobile-frame-view .sm\:w-\[160px\] {
+  width: 140px !important;
+}
+
+.mobile-frame-view .sm\:w-28 {
+  width: 6rem !important;
+}
+
+.mobile-frame-view .sm\:h-28 {
+  height: 6rem !important;
+}
+
+.mobile-frame-view .sm\:h-9\.5,
+.mobile-frame-view .sm\:h-10\.5 {
+  height: 2.125rem !important;
+}
+
+.mobile-frame-view .sm\:w-5\.5 {
+  width: 1.25rem !important;
+}
+
+.mobile-frame-view .sm\:h-5\.5 {
+  height: 1.25rem !important;
+}
+
+.mobile-frame-view .sm\:w-5 {
+  width: 1rem !important;
+}
+
+.mobile-frame-view .sm\:h-5 {
+  height: 1rem !important;
+}
+
+.mobile-frame-view .sm\:w-4 {
+  width: 0.875rem !important;
+}
+
+.mobile-frame-view .sm\:h-4 {
+  height: 0.875rem !important;
+}
+
+/* Visibility: keep desktop-only elements hidden inside phone simulator */
+.mobile-frame-view .hidden.sm\:block {
+  display: none !important;
+}
+
+.mobile-frame-view .hidden.sm\:flex {
+  display: none !important;
+}
+
+.mobile-frame-view .sm\:hidden {
+  display: block !important;
+}
+
 /* Utility Animations */
 @keyframes pulse-subtle {
   0%, 100% { opacity: 1; transform: scale(1); }

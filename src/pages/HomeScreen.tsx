@@ -104,7 +104,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectBand }) => {
         </div>
 
         {/* 2-Column Grid (Spotify Signature Quick Picks) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 w-full min-w-0">
+        <div className="grid grid-cols-2 gap-2 sm:gap-2.5 w-full min-w-0">
           {quickPicks.map(item => (
             <div
               key={item.id}

@@ -289,7 +289,7 @@ export const BookingScreen: React.FC = () => {
           </div>
 
           {/* 3. Date & Performance Hours */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+          <div className="grid grid-cols-2 gap-2.5">
             <div>
               <label className="block text-[11px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
                 Event Date
@@ -354,7 +354,7 @@ export const BookingScreen: React.FC = () => {
           </div>
 
           {/* 4. Guest Count & Venue Location */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+          <div className="grid grid-cols-2 gap-2.5">
             <div>
               <label className="block text-[11px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
                 Expected Guests
@@ -464,7 +464,7 @@ export const BookingScreen: React.FC = () => {
               <span className="text-[10px] text-muted-foreground font-medium">Quick 2-Hr Response</span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-2 gap-2">
               <Input
                 type="text"
                 required
