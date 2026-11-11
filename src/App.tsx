@@ -38,31 +38,38 @@ const AppContent: React.FC = () => {
       {/* Toast Notification */}
       <Toast />
 
-      {/* Mobile Top Header (hidden on standalone splash/auth screens) */}
-      {!isNavHidden && <TopHeader onOpenSearch={() => setIsSearchOpen(true)} />}
+      {/* Main App Container: Fixed Height Flex Column */}
+      <div className="w-full h-full flex flex-col relative overflow-hidden bg-background min-w-0">
+        {/* Top Header (Fixed at top, never scrolls) */}
+        {!isNavHidden && <TopHeader onOpenSearch={() => setIsSearchOpen(true)} />}
 
-      {/* Main Screen Routes */}
-      <div className="flex-1 flex flex-col relative w-full min-w-0">
-        <Routes>
-          <Route path="/" element={<HomeScreen onSelectBand={setSelectedBand} />} />
-          <Route path="/splash" element={<SplashScreen />} />
-          <Route path="/onboarding" element={<OnboardingScreen />} />
-          <Route path="/auth" element={<AuthScreen />} />
-          <Route path="/music" element={<MusicScreen />} />
-          <Route path="/roster" element={<RosterScreen onSelectBand={setSelectedBand} />} />
-          <Route path="/book" element={<BookingScreen />} />
-          <Route path="/events" element={<EventsScreen />} />
-          <Route path="/faq" element={<FaqScreen />} />
-          <Route path="/about" element={<AboutScreen />} />
-          <Route path="/profile" element={<ProfileScreen onSelectBand={setSelectedBand} />} />
-        </Routes>
+        {/* Scrollable Content Viewport (Only this area scrolls with scrollbar!) */}
+        <main className="flex-1 w-full overflow-y-auto overflow-x-hidden relative min-w-0 overscroll-contain">
+          <Routes>
+            <Route path="/" element={<HomeScreen onSelectBand={setSelectedBand} />} />
+            <Route path="/splash" element={<SplashScreen />} />
+            <Route path="/onboarding" element={<OnboardingScreen />} />
+            <Route path="/auth" element={<AuthScreen />} />
+            <Route path="/music" element={<MusicScreen />} />
+            <Route path="/roster" element={<RosterScreen onSelectBand={setSelectedBand} />} />
+            <Route path="/book" element={<BookingScreen />} />
+            <Route path="/events" element={<EventsScreen />} />
+            <Route path="/faq" element={<FaqScreen />} />
+            <Route path="/about" element={<AboutScreen />} />
+            <Route path="/profile" element={<ProfileScreen onSelectBand={setSelectedBand} />} />
+          </Routes>
+        </main>
+
+        {/* Fixed Bottom Dock (Never scrolls with content/scrollbar!) */}
+        {!isNavHidden && (
+          <div className="shrink-0 w-full z-30 select-none pb-3 pt-1 bg-gradient-to-t from-background via-background/95 to-transparent">
+            {/* Persistent Mini Audio Player */}
+            <MiniPlayer />
+            {/* Floating Capsule Bottom Navigation */}
+            <BottomNavigation />
+          </div>
+        )}
       </div>
-
-      {/* Persistent Mini Audio Player */}
-      {!isNavHidden && <MiniPlayer />}
-
-      {/* Mobile Bottom Navigation Bar */}
-      {!isNavHidden && <BottomNavigation />}
 
       {/* Modals & Overlays */}
       <FullScreenPlayer />

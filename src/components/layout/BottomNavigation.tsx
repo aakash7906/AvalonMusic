@@ -12,8 +12,8 @@ export const BottomNavigation: React.FC = () => {
   ];
 
   return (
-    <nav className="sticky bottom-3 z-30 w-full px-3 pointer-events-none select-none shrink-0 min-w-0">
-      <div className="pointer-events-auto max-w-[380px] mx-auto rounded-2xl sm:rounded-full bg-card/90 backdrop-blur-2xl border border-white/10 shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_25px_var(--primary-glow)] px-1.5 py-1.5 flex items-center justify-between min-w-0">
+    <nav className="w-full px-3 select-none shrink-0 min-w-0">
+      <div className="max-w-[390px] mx-auto rounded-2xl sm:rounded-full bg-card/95 backdrop-blur-2xl border border-white/12 shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_25px_var(--primary-glow)] px-1.5 py-1.5 flex items-center justify-between min-w-0">
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
@@ -21,7 +21,7 @@ export const BottomNavigation: React.FC = () => {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-xl sm:rounded-full transition-all duration-200 relative min-w-0 ${
+                `flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-xl sm:rounded-full transition-all duration-150 relative min-w-0 ${
                   isActive
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground'

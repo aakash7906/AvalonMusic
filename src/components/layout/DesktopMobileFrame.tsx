@@ -52,12 +52,12 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
   };
 
   return (
-    <div className="w-full min-h-screen bg-background text-foreground flex flex-col min-w-0 max-w-full overflow-x-hidden">
+    <div className="w-full h-full min-h-screen bg-background text-foreground flex flex-col min-w-0 max-w-full overflow-hidden">
       {/* =========================================================================
           1. NATIVE MOBILE VIEWPORT (< 768px md:hidden)
-          Takes 100% full screen with native mobile ergonomics, no fake device frame!
+          100% full screen with native mobile ergonomics, locked to viewport height!
          ========================================================================= */}
-      <div className="flex md:hidden flex-col w-full min-h-screen min-w-0 max-w-full overflow-x-hidden relative bg-background">
+      <div className="flex md:hidden flex-col w-full h-[100dvh] min-w-0 max-w-full overflow-hidden relative bg-background">
         {children}
       </div>
 
@@ -65,7 +65,7 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
           2. DESKTOP VIEWPORT (>= 768px hidden md:flex)
           Presents the high-end mobile frame simulator with desktop utilities
          ========================================================================= */}
-      <div className="hidden md:flex min-h-screen w-full flex-col items-center justify-center relative py-16 bg-background">
+      <div className="hidden md:flex min-h-screen w-full flex-col items-center justify-center relative py-12 bg-background overflow-hidden">
         {/* Background Ambient Glow & Subtle Texture */}
         <div className="fixed inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[20%] w-[550px] h-[550px] rounded-full bg-primary/10 blur-[130px]" />
@@ -80,7 +80,7 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
         </div>
 
         {/* Desktop Top Floating Utility Bar */}
-        <div className="fixed top-4 z-40 flex items-center justify-between w-[92%] max-w-5xl px-5 py-2.5 rounded-2xl glass-panel-elevated text-xs transition-all">
+        <div className="fixed top-3 z-40 flex items-center justify-between w-[92%] max-w-5xl px-5 py-2.5 rounded-2xl glass-panel-elevated text-xs transition-all">
           {/* Brand identity */}
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 rounded-lg overflow-hidden bg-black/40 p-1 flex items-center justify-center border border-border">
@@ -173,7 +173,7 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
           /* Smartphone Shell on Desktop */
           <div className="relative group my-auto">
             <div
-              className={`w-[412px] h-[860px] max-h-[calc(100vh-100px)] rounded-[48px] border-[10px] ${
+              className={`w-[412px] h-[850px] max-h-[calc(100vh-80px)] rounded-[48px] border-[10px] ${
                 skinStyles[frameSettings.skin]
               } relative flex flex-col overflow-hidden transition-all duration-300 shadow-2xl min-w-0`}
             >
@@ -184,7 +184,7 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
               <div className="absolute -right-[13px] top-36 w-[3px] h-16 bg-zinc-600 rounded-r-sm" />
 
               {/* Mobile Phone Status Bar */}
-              <header className="sticky top-0 z-30 w-full pt-2.5 pb-1 px-6 flex items-center justify-between text-xs bg-background/90 backdrop-blur-md select-none shrink-0">
+              <header className="w-full pt-2.5 pb-1 px-6 flex items-center justify-between text-xs bg-background select-none shrink-0 border-b border-border/40">
                 <span className="font-semibold text-[13px] tracking-tight text-foreground/90 pl-1">
                   {currentTime || '9:41'}
                 </span>
@@ -223,20 +223,20 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
                 </div>
               </header>
 
-              {/* Inner App Content Scrollport */}
-              <div className="flex-1 w-full overflow-y-auto overflow-x-hidden relative flex flex-col bg-background min-w-0">
+              {/* Inner App Content: Fills remaining height, contains fixed top/bottom and scrollable body */}
+              <div className="flex-1 w-full overflow-hidden relative flex flex-col bg-background min-w-0">
                 {children}
               </div>
 
               {/* Bottom Home Indicator Pill */}
-              <div className="w-full py-1.5 flex items-center justify-center bg-background select-none shrink-0">
+              <div className="w-full py-1.5 flex items-center justify-center bg-background select-none shrink-0 border-t border-border/30">
                 <div className="w-32 h-1 bg-white/20 rounded-full hover:bg-white/40 transition-colors" />
               </div>
             </div>
           </div>
         ) : (
           /* Full Screen Responsive Desktop View */
-          <div className="w-full max-w-2xl mx-auto min-h-screen flex flex-col bg-background relative shadow-2xl border-x border-border min-w-0">
+          <div className="w-full max-w-2xl mx-auto h-[90vh] flex flex-col bg-background relative shadow-2xl border-x border-border min-w-0 rounded-2xl overflow-hidden">
             {children}
           </div>
         )}

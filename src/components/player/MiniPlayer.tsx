@@ -21,11 +21,11 @@ export const MiniPlayer: React.FC = () => {
   return (
     <aside 
       aria-label="Audio player preview"
-      className="sticky bottom-[76px] z-20 w-full px-3 pointer-events-none select-none"
+      className="w-full px-3 mb-1.5 select-none shrink-0"
     >
       <div 
         onClick={() => setIsExpanded(true)}
-        className="pointer-events-auto max-w-[380px] mx-auto glass-panel-elevated rounded-2xl p-2 flex items-center justify-between shadow-2xl cursor-pointer hover:border-primary/50 transition-all relative overflow-hidden"
+        className="max-w-[390px] mx-auto glass-panel-elevated rounded-2xl p-2 flex items-center justify-between shadow-2xl cursor-pointer hover:border-primary/50 transition-all relative overflow-hidden"
       >
         {/* Subtle top progress bar */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-secondary">
