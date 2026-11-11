@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { AudioProvider } from './context/AudioContext';
 import { DesktopMobileFrame } from './components/layout/DesktopMobileFrame';
@@ -85,9 +85,9 @@ export const App: React.FC = () => {
   return (
     <AppProvider>
       <AudioProvider>
-        <HashRouter>
+        <BrowserRouter>
           <AppContent />
-        </HashRouter>
+        </BrowserRouter>
       </AudioProvider>
     </AppProvider>
   );

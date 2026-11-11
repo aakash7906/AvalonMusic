@@ -3,18 +3,13 @@ import {
   Search,
   Star,
   Users,
-  Heart,
   Play,
   Pause,
-  Filter,
-  ChevronRight,
   CheckCircle2,
-  CalendarCheck
 } from 'lucide-react';
 import { AVALON_BANDS, GENRE_CATEGORIES } from '../data/mockData';
 import { Band } from '../types';
 import { useAudio } from '../context/AudioContext';
-import { useApp } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 
 interface RosterScreenProps {
@@ -24,7 +19,6 @@ interface RosterScreenProps {
 export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
   const navigate = useNavigate();
   const { currentTrack, isPlaying, playTrack, togglePlay } = useAudio();
-  const { isFavorite, toggleFavorite } = useApp();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('All');
@@ -44,7 +38,7 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
   });
 
   return (
-    <div className="w-full max-w-full min-w-0 flex flex-col space-y-4 sm:space-y-6 px-4 sm:px-6 pt-3 sm:pt-5 pb-24 text-foreground overflow-x-hidden">
+    <div className="w-full max-w-full min-w-0 flex flex-col space-y-4 sm:space-y-6 px-4 sm:px-6 pt-3 sm:pt-5 pb-32 text-foreground overflow-x-hidden">
       {/* Header */}
       <div>
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">
@@ -54,9 +48,6 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
         <h1 className="text-xl sm:text-2xl font-bold font-display text-foreground">
           Houston's Top Rated Live Bands
         </h1>
-        <p className="text-xs sm:text-sm text-muted-foreground">
-          Explore line-ups, listen to studio samples, and check availability.
-        </p>
       </div>
 
       {/* Search Bar & Sort Selector */}
@@ -102,7 +93,6 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
       {/* Bands Catalog Grid (2-column on tablet) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pt-1 w-full min-w-0">
         {filteredBands.map(band => {
-          const isFav = isFavorite(band.id);
           const isBandPlaying = isPlaying && currentTrack?.artist === band.name;
 
           return (
@@ -119,27 +109,6 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-black/20 to-transparent" />
-
-                {/* Top Badges */}
-                <div className="absolute top-3 left-3 flex items-center gap-2">
-                  <span className="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-bold text-primary border border-primary/20">
-                    {band.genre}
-                  </span>
-                  <span className="px-2 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-semibold text-white/90">
-                    {band.membersCount}
-                  </span>
-                </div>
-
-                <button
-                  onClick={e => {
-                    e.stopPropagation();
-                    toggleFavorite(band.id);
-                  }}
-                  className={`absolute top-3 right-3 p-2 rounded-full glass-panel transition-transform active:scale-90 ${isFav ? 'text-primary' : 'text-white/80 hover:text-white'
-                    }`}
-                >
-                  <Heart className={`w-4 h-4 ${isFav ? 'fill-current' : ''}`} />
-                </button>
 
                 {/* Audio Preview Trigger */}
                 {band.audioTracks.length > 0 && (
