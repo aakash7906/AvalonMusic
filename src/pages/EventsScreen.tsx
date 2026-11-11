@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, Clock, Ticket, Share2, Check, Sparkles } from 'lucide-react';
+import { Calendar, MapPin, Clock, Ticket, Share2, Check } from 'lucide-react';
 import { LIVE_SHOWCASES } from '../data/mockData';
 import { useApp } from '../context/AppContext';
 
@@ -12,23 +12,23 @@ export const EventsScreen: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex flex-col space-y-4 px-4 pt-3 pb-24 text-foreground">
+    <div className="w-full max-w-full min-w-0 flex flex-col space-y-4 sm:space-y-6 px-4 sm:px-6 pt-3 sm:pt-5 pb-24 text-foreground overflow-x-hidden">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-1">
-          <Calendar className="w-3 h-3" />
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">
+          <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           <span>Houston Showcases</span>
         </div>
-        <h1 className="text-xl font-bold font-display text-foreground">
+        <h1 className="text-xl sm:text-2xl font-bold font-display text-foreground">
           Live Band Showcases & Events
         </h1>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           Hear our bands live in person across Houston premier ballrooms & venues.
         </p>
       </div>
 
-      {/* Events List */}
-      <div className="space-y-4 pt-1">
+      {/* Events List (2-column on tablet) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pt-1 w-full min-w-0">
         {LIVE_SHOWCASES.map(event => {
           const rsvpd = isRsvpd(event.id);
 
@@ -97,7 +97,7 @@ export const EventsScreen: React.FC = () => {
 
                 <div className="pt-2 border-t border-border flex items-center justify-between">
                   <span className="text-[11px] text-emerald-400 font-medium flex items-center gap-1">
-                    <Sparkles className="w-3 h-3" /> Complimentary Admission
+                    <Check className="w-3 h-3 text-emerald-400" /> Complimentary Admission
                   </span>
 
                   <button

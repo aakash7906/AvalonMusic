@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Bell, MapPin, ChevronLeft, Phone, X, Search, Info, HelpCircle } from 'lucide-react';
+import { Bell, ChevronLeft, X, Search } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 interface TopHeaderProps {
@@ -18,64 +18,67 @@ export const TopHeader: React.FC<TopHeaderProps> = ({ onOpenSearch }) => {
 
   return (
     <>
-      <header className="sticky top-0 z-20 w-full px-3.5 py-2.5 flex items-center justify-between glass-nav border-b border-border min-w-0">
+      <header className="sticky top-0 z-20 w-full px-3.5 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between glass-nav border-b border-border min-w-0">
         {/* Left Side: Brand Logo or Back Button */}
-        <div className="flex items-center gap-2 min-w-0">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           {!isRootTab ? (
-            <button
-              onClick={() => navigate(-1)}
-              className="p-1.5 -ml-1 rounded-xl bg-card hover:bg-secondary text-foreground border border-border transition-all active:scale-95 shrink-0"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => navigate(-1)}
+                className="p-1.5 sm:p-2 -ml-1 rounded-xl bg-card hover:bg-secondary text-foreground border border-border transition-all active:scale-95 shrink-0"
+                aria-label="Go back"
+              >
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+              <div 
+                onClick={() => navigate('/')} 
+                className="flex items-center cursor-pointer select-none active:scale-95 transition-transform shrink-0"
+                role="button"
+                aria-label="Avalon Music Home"
+              >
+                <img 
+                  src="/logo.png" 
+                  alt="Avalon Music" 
+                  className="h-7 sm:h-8 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
+                />
+              </div>
+            </div>
           ) : (
             <div 
               onClick={() => navigate('/')} 
-              className="flex items-center gap-2 cursor-pointer group shrink-0"
+              className="flex items-center cursor-pointer select-none active:scale-95 transition-transform shrink-0"
+              role="button"
+              aria-label="Avalon Music Home"
             >
-              <div className="h-7 w-auto px-1.5 py-0.5 rounded-lg bg-black/40 border border-border flex items-center justify-center">
-                <img src="/logo.png" alt="Avalon Music" className="h-5 w-auto object-contain" />
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="Avalon Music" 
+                className="h-8 sm:h-9 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
+              />
             </div>
           )}
-
-          {/* Location Badge */}
-          <div className="flex items-center gap-1 text-[10px] text-muted-foreground bg-secondary/80 px-2 py-0.5 rounded-full border border-border/60 shrink-0">
-            <MapPin className="w-2.5 h-2.5 text-primary shrink-0" />
-            <span className="font-semibold text-foreground">Houston</span>
-          </div>
         </div>
 
-        {/* Right Side: Search, Quick Call & Notifications */}
-        <div className="flex items-center gap-1.5 shrink-0">
+        {/* Right Side: Search & Notifications */}
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Quick Search */}
           {onOpenSearch && (
             <button
               onClick={onOpenSearch}
               title="Search bands & tracks"
-              className="p-1.5 rounded-xl bg-secondary/70 hover:bg-secondary text-foreground border border-border transition-colors active:scale-95"
+              className="p-1.5 sm:p-2 rounded-xl bg-secondary/70 hover:bg-secondary text-foreground border border-border transition-colors active:scale-95"
             >
-              <Search className="w-3.5 h-3.5" />
+              <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           )}
-
-          {/* Concierge Hotline */}
-          <a
-            href="tel:8327238886"
-            title="Call Avalon Music (832) 723-8886"
-            className="p-1.5 rounded-xl bg-secondary/70 hover:bg-secondary text-primary border border-border transition-colors flex items-center gap-1 text-xs active:scale-95"
-          >
-            <Phone className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline text-[10px] font-bold">Call</span>
-          </a>
 
           {/* Notification Bell */}
           <div className="relative">
             <button
               onClick={() => setShowNotifications(!showNotifications)}
-              className="p-1.5 rounded-xl bg-secondary/70 hover:bg-secondary text-foreground border border-border transition-all active:scale-95 relative"
+              className="p-1.5 sm:p-2 rounded-xl bg-secondary/70 hover:bg-secondary text-foreground border border-border transition-all active:scale-95 relative"
             >
-              <Bell className="w-3.5 h-3.5 text-foreground" />
+              <Bell className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-foreground" />
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-primary text-primary-foreground text-[9px] font-bold flex items-center justify-center animate-pulse">
                   {unreadCount}
@@ -85,17 +88,17 @@ export const TopHeader: React.FC<TopHeaderProps> = ({ onOpenSearch }) => {
 
             {/* Notification Dropdown Panel */}
             {showNotifications && (
-              <div className="absolute right-0 mt-2 w-64 sm:w-72 p-3 bg-card border border-border rounded-2xl shadow-2xl z-50">
+              <div className="absolute right-0 mt-2 w-64 sm:w-80 p-3 bg-card border border-border rounded-2xl shadow-2xl z-50">
                 <div className="flex items-center justify-between pb-2 border-b border-border">
-                  <span className="text-xs font-bold text-foreground">Notifications</span>
+                  <span className="text-xs sm:text-sm font-bold text-foreground">Notifications</span>
                   <button 
                     onClick={() => setShowNotifications(false)}
                     className="text-muted-foreground hover:text-foreground text-xs"
                   >
-                    <X className="w-3.5 h-3.5" />
+                    <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </button>
                 </div>
-                <div className="space-y-2 mt-2 max-h-60 overflow-y-auto">
+                <div className="space-y-2 mt-2 max-h-60 overflow-y-auto no-scrollbar scroll-touch">
                   {notifications.map(n => (
                     <div
                       key={n.id}

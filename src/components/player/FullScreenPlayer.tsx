@@ -13,7 +13,6 @@ import {
   Heart, 
   Share2, 
   Video, 
-  Sparkles, 
   CalendarCheck,
   Shuffle,
   Repeat
@@ -66,30 +65,31 @@ export const FullScreenPlayer: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-2xl flex flex-col justify-between p-6 animate-in fade-in slide-in-from-bottom duration-300">
-      {/* Top Header */}
-      <div className="flex items-center justify-between">
-        <button
-          onClick={() => setIsExpanded(false)}
-          className="p-2.5 rounded-full bg-secondary text-foreground hover:bg-secondary-hover transition-colors"
-        >
-          <ChevronDown className="w-6 h-6" />
-        </button>
+      <div className="w-full max-w-md sm:max-w-lg mx-auto h-full flex flex-col justify-between">
+        {/* Top Header */}
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => setIsExpanded(false)}
+            className="p-2.5 rounded-full bg-secondary text-foreground hover:bg-secondary-hover transition-colors"
+          >
+            <ChevronDown className="w-6 h-6" />
+          </button>
 
-        <div className="text-center">
-          <span className="text-[11px] uppercase tracking-wider font-semibold text-primary">Now Playing</span>
-          <p className="text-xs text-muted-foreground">Avalon Music Audio Showcase</p>
+          <div className="text-center">
+            <span className="text-[11px] uppercase tracking-wider font-semibold text-primary">Now Playing</span>
+            <p className="text-xs text-muted-foreground">Avalon Music Audio Showcase</p>
+          </div>
+
+          <button
+            onClick={() => {
+              navigator.clipboard?.writeText(window.location.href);
+              showToast('Track link copied!', 'success');
+            }}
+            className="p-2.5 rounded-full bg-secondary text-foreground hover:bg-secondary-hover transition-colors"
+          >
+            <Share2 className="w-5 h-5" />
+          </button>
         </div>
-
-        <button
-          onClick={() => {
-            navigator.clipboard?.writeText(window.location.href);
-            showToast('Track link copied!', 'success');
-          }}
-          className="p-2.5 rounded-full bg-secondary text-foreground hover:bg-secondary-hover transition-colors"
-        >
-          <Share2 className="w-5 h-5" />
-        </button>
-      </div>
 
       {/* Centerpiece: Vinyl & Album Artwork */}
       <div className="my-auto flex flex-col items-center justify-center py-4">
@@ -254,5 +254,6 @@ export const FullScreenPlayer: React.FC = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };

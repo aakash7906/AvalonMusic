@@ -38,7 +38,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col items-center justify-start p-4 pt-12 animate-in fade-in duration-200">
-      <div className="w-full max-w-md bg-card border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[80vh]">
+      <div className="w-full max-w-md sm:max-w-xl bg-card border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[80vh]">
         {/* Search Input Bar */}
         <div className="p-3 border-b border-border flex items-center gap-2 bg-secondary/50">
           <Search className="w-4 h-4 text-primary shrink-0" />
@@ -59,7 +59,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
         </div>
 
         {/* Results */}
-        <div className="p-3 overflow-y-auto space-y-3 flex-1 text-xs">
+        <div className="p-3 overflow-y-auto space-y-3 flex-1 text-xs no-scrollbar scroll-touch">
           {!query.trim() ? (
             <div className="space-y-2 py-4">
               <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Quick Suggestions</span>

@@ -3,7 +3,6 @@ import {
   Search, 
   Star, 
   Users, 
-  Sparkles, 
   Heart, 
   Play, 
   Pause, 
@@ -45,23 +44,23 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
   });
 
   return (
-    <div className="w-full flex flex-col space-y-4 px-4 pt-3 pb-24 text-foreground">
+    <div className="w-full max-w-full min-w-0 flex flex-col space-y-4 sm:space-y-6 px-4 sm:px-6 pt-3 sm:pt-5 pb-24 text-foreground overflow-x-hidden">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-1">
-          <Users className="w-3 h-3" />
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">
+          <Users className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           <span>Artist Roster</span>
         </div>
-        <h1 className="text-xl font-bold font-display text-foreground">
+        <h1 className="text-xl sm:text-2xl font-bold font-display text-foreground">
           Houston's Top Rated Live Bands
         </h1>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           Explore line-ups, listen to studio samples, and check availability.
         </p>
       </div>
 
       {/* Search Bar & Sort Selector */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 sm:gap-3 w-full min-w-0">
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
@@ -69,14 +68,14 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
             placeholder="Search band name, genre..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-card border border-border rounded-xl text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+            className="w-full pl-10 pr-4 py-2.5 sm:py-3 bg-card border border-border rounded-xl text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
           />
         </div>
 
         <select
           value={sortBy}
           onChange={e => setSortBy(e.target.value as any)}
-          className="px-3 py-2 bg-card border border-border rounded-xl text-xs text-foreground focus:outline-none focus:border-primary"
+          className="px-3 sm:px-4 py-2 sm:py-2.5 bg-card border border-border rounded-xl text-xs sm:text-sm text-foreground focus:outline-none focus:border-primary"
         >
           <option value="rating">Top Rated</option>
           <option value="reviews">Most Popular</option>
@@ -85,12 +84,12 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
       </div>
 
       {/* Genre Filter Chips */}
-      <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+      <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar w-full min-w-0">
         {GENRE_CATEGORIES.map(genre => (
           <button
             key={genre}
             onClick={() => setSelectedGenre(genre)}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               selectedGenre === genre
                 ? 'bg-primary text-primary-foreground shadow-md'
                 : 'bg-card text-muted-foreground hover:text-foreground border border-border'
@@ -101,8 +100,8 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
         ))}
       </div>
 
-      {/* Bands Catalog Grid */}
-      <div className="space-y-4 pt-1">
+      {/* Bands Catalog Grid (2-column on tablet) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pt-1 w-full min-w-0">
         {filteredBands.map(band => {
           const isFav = isFavorite(band.id);
           const isBandPlaying = isPlaying && currentTrack?.artist === band.name;

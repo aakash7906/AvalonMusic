@@ -46,7 +46,7 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col justify-end sm:items-center sm:justify-center p-0 sm:p-4 animate-in fade-in duration-200">
       <div 
-        className="w-full sm:max-w-xl max-h-[90vh] bg-background border border-border rounded-t-[32px] sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl relative"
+        className="w-full sm:max-w-xl md:max-w-2xl max-h-[92vh] bg-background border border-border rounded-t-[32px] sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl relative"
         onClick={e => e.stopPropagation()}
       >
         {/* Sticky Top Bar Controls */}
@@ -76,8 +76,8 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
           </div>
         </div>
 
-        {/* Scrollable Content Body */}
-        <div className="overflow-y-auto flex-1 pb-24">
+        {/* Scrollable Content Body (Hidden scrollbar with touch inertial scrolling) */}
+        <div className="overflow-y-auto flex-1 pb-24 no-scrollbar scroll-touch">
           {/* Hero Cover */}
           <div className="relative h-60 w-full overflow-hidden">
             <img

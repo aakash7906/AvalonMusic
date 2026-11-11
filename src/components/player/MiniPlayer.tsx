@@ -21,11 +21,11 @@ export const MiniPlayer: React.FC = () => {
   return (
     <aside 
       aria-label="Audio player preview"
-      className="w-full px-3 mb-1.5 select-none shrink-0"
+      className="w-full px-3 mb-1.5 select-none shrink-0 min-w-0"
     >
       <div 
         onClick={() => setIsExpanded(true)}
-        className="max-w-[390px] mx-auto glass-panel-elevated rounded-2xl p-2 flex items-center justify-between shadow-2xl cursor-pointer hover:border-primary/50 transition-all relative overflow-hidden"
+        className="w-full max-w-[420px] sm:max-w-lg md:max-w-xl mx-auto glass-panel-elevated rounded-2xl p-2 sm:p-2.5 flex items-center justify-between shadow-2xl cursor-pointer hover:border-primary/50 transition-all relative overflow-hidden min-w-0"
       >
         {/* Subtle top progress bar */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-secondary">
@@ -37,7 +37,7 @@ export const MiniPlayer: React.FC = () => {
 
         {/* Left: Thumbnail & Song Title */}
         <div className="flex items-center gap-2.5 min-w-0 pr-2">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden shrink-0 border border-border shadow-md">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl overflow-hidden shrink-0 border border-border shadow-md">
             <img 
               src={currentTrack.coverUrl} 
               alt={currentTrack.title}
@@ -55,10 +55,10 @@ export const MiniPlayer: React.FC = () => {
           </div>
 
           <div className="min-w-0">
-            <h4 className="text-xs font-bold text-foreground truncate flex items-center gap-1.5">
+            <h4 className="text-xs sm:text-sm font-bold text-foreground truncate flex items-center gap-1.5">
               <span>{currentTrack.title}</span>
             </h4>
-            <p className="text-[10px] text-muted-foreground truncate">
+            <p className="text-[10px] sm:text-xs text-muted-foreground truncate">
               {currentTrack.artist} • <span className="text-primary/90">{currentTrack.genre}</span>
             </p>
           </div>
@@ -78,23 +78,23 @@ export const MiniPlayer: React.FC = () => {
 
           <button
             onClick={togglePlay}
-            className="w-8 h-8 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-md active:scale-90 transition-transform"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-md active:scale-90 transition-transform"
           >
-            {isPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current ml-0.5" />}
+            {isPlaying ? <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" /> : <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current ml-0.5" />}
           </button>
 
           <button
             onClick={nextTrack}
             className="p-1.5 rounded-xl text-muted-foreground hover:text-foreground transition-all active:scale-95"
           >
-            <SkipForward className="w-3.5 h-3.5" />
+            <SkipForward className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
 
           <button
             onClick={() => setIsExpanded(true)}
             className="p-1.5 rounded-xl text-muted-foreground hover:text-foreground hidden sm:block"
           >
-            <Maximize2 className="w-3 h-3" />
+            <Maximize2 className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

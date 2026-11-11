@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { 
   CalendarCheck, 
-  Sparkles, 
   MapPin, 
   Users, 
   Clock, 
@@ -89,17 +88,17 @@ export const BookingScreen: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex flex-col space-y-4 px-4 pt-3 pb-24 text-foreground">
+    <div className="w-full max-w-full min-w-0 flex flex-col space-y-4 sm:space-y-6 px-4 sm:px-6 pt-3 sm:pt-5 pb-24 text-foreground overflow-x-hidden">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-1">
-          <CalendarCheck className="w-3 h-3" />
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">
+          <CalendarCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           <span>Avalon Booking Concierge</span>
         </div>
-        <h1 className="text-xl font-bold font-display text-foreground">
+        <h1 className="text-xl sm:text-2xl font-bold font-display text-foreground">
           Request a Custom Band / DJ Quote
         </h1>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           Get transparent pricing and check musician availability in Houston.
         </p>
       </div>
@@ -167,10 +166,10 @@ export const BookingScreen: React.FC = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* 1. Event Type */}
           <div className="space-y-1.5">
-            <label className="block text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+            <label className="block text-[11px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider">
               1. Event Occasion
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
               {[
                 'Wedding Reception',
                 'Wedding Ceremony & Cocktail',
@@ -183,7 +182,7 @@ export const BookingScreen: React.FC = () => {
                   key={type}
                   type="button"
                   onClick={() => setEventType(type)}
-                  className={`p-2.5 rounded-xl border text-xs font-semibold text-left transition-all ${
+                  className={`p-2.5 sm:p-3 rounded-xl border text-xs sm:text-sm font-semibold text-left transition-all ${
                     eventType === type
                       ? 'bg-primary text-primary-foreground border-primary shadow-sm'
                       : 'bg-card border-border text-muted-foreground hover:text-foreground'

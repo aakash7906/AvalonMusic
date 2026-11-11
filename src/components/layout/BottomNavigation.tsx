@@ -13,7 +13,7 @@ export const BottomNavigation: React.FC = () => {
 
   return (
     <nav className="w-full px-3 select-none shrink-0 min-w-0">
-      <div className="max-w-[390px] mx-auto rounded-2xl sm:rounded-full bg-card/95 backdrop-blur-2xl border border-white/12 shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_25px_var(--primary-glow)] px-1.5 py-1.5 flex items-center justify-between min-w-0">
+      <div className="w-full max-w-[420px] sm:max-w-lg md:max-w-xl mx-auto rounded-2xl sm:rounded-full bg-card/95 backdrop-blur-2xl border border-white/12 shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_25px_var(--primary-glow)] px-1 sm:px-3 py-1.5 flex items-center justify-between min-w-0">
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
@@ -21,7 +21,7 @@ export const BottomNavigation: React.FC = () => {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-xl sm:rounded-full transition-all duration-150 relative min-w-0 ${
+                `flex-1 flex flex-col items-center justify-center py-1.5 px-0.5 sm:px-2 rounded-xl sm:rounded-full transition-all duration-150 relative min-w-0 active:scale-95 ${
                   isActive
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground'
@@ -31,7 +31,7 @@ export const BottomNavigation: React.FC = () => {
               {({ isActive }) => (
                 <>
                   <div
-                    className={`p-1.5 rounded-xl sm:rounded-full transition-all shrink-0 ${
+                    className={`p-1.5 sm:p-2 rounded-xl sm:rounded-full transition-all shrink-0 ${
                       item.isAccent && !isActive
                         ? 'bg-primary/10 text-primary'
                         : item.isAccent && isActive
@@ -41,10 +41,10 @@ export const BottomNavigation: React.FC = () => {
                         : ''
                     }`}
                   >
-                    <Icon className="w-4 h-4 transition-transform active:scale-90" />
+                    <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform active:scale-90" />
                   </div>
                   <span
-                    className={`text-[10px] mt-0.5 font-medium truncate max-w-full text-center transition-all ${
+                    className={`text-[9px] sm:text-[11px] mt-0.5 font-medium truncate max-w-full text-center transition-all ${
                       isActive ? 'font-bold text-primary' : 'text-muted-foreground'
                     }`}
                   >

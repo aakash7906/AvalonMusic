@@ -6,7 +6,6 @@ import {
   Video, 
   Heart, 
   Headphones, 
-  Sparkles, 
   Music, 
   SlidersHorizontal,
   ExternalLink
@@ -36,43 +35,43 @@ export const MusicScreen: React.FC = () => {
   const videoTracks = AVALON_TRACKS.filter(t => t.youtubeId);
 
   return (
-    <div className="w-full flex flex-col space-y-4 px-4 pt-3 pb-24 text-foreground">
+    <div className="w-full max-w-full min-w-0 flex flex-col space-y-4 sm:space-y-6 px-4 sm:px-6 pt-3 sm:pt-5 pb-24 text-foreground overflow-x-hidden">
       {/* Page Header */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-1">
-          <Headphones className="w-3 h-3" />
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">
+          <Headphones className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           <span>Look & Listen</span>
         </div>
-        <h1 className="text-xl font-bold font-display text-foreground">
+        <h1 className="text-xl sm:text-2xl font-bold font-display text-foreground">
           Music & Video Showcase
         </h1>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           Stream live band recordings and watch Houston wedding & gala videos.
         </p>
       </div>
 
       {/* Audio vs Video Tab Toggle */}
-      <div className="flex bg-secondary/80 p-1 rounded-2xl border border-border">
+      <div className="flex bg-secondary/80 p-1 rounded-2xl border border-border sm:max-w-lg">
         <button
           onClick={() => setActiveTab('audio')}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
             activeTab === 'audio'
               ? 'bg-primary text-primary-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          <Music className="w-3.5 h-3.5" />
+          <Music className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span>Studio & Live Audio ({AVALON_TRACKS.length})</span>
         </button>
         <button
           onClick={() => setActiveTab('video')}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
             activeTab === 'video'
               ? 'bg-primary text-primary-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          <Video className="w-3.5 h-3.5" />
+          <Video className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span>Video Performances ({videoTracks.length})</span>
         </button>
       </div>
@@ -85,17 +84,17 @@ export const MusicScreen: React.FC = () => {
           placeholder="Search track, genre, or band..."
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 bg-card border border-border rounded-xl text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+          className="w-full pl-10 pr-4 py-2.5 sm:py-3 bg-card border border-border rounded-xl text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
         />
       </div>
 
       {/* Genre Chips */}
-      <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+      <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar w-full min-w-0">
         {GENRE_CATEGORIES.map(genre => (
           <button
             key={genre}
             onClick={() => setSelectedGenre(genre)}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
               selectedGenre === genre
                 ? 'bg-primary text-primary-foreground shadow-md'
                 : 'bg-card text-muted-foreground hover:text-foreground border border-border'
@@ -108,9 +107,9 @@ export const MusicScreen: React.FC = () => {
 
       {/* Content depending on Active Tab */}
       {activeTab === 'audio' ? (
-        <div className="space-y-2 pt-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 pt-1 w-full min-w-0">
           {filteredTracks.length === 0 ? (
-            <div className="text-center py-12 text-muted-foreground text-xs">
+            <div className="col-span-full text-center py-12 text-muted-foreground text-xs sm:text-sm">
               No audio tracks found for "{searchQuery}".
             </div>
           ) : (
@@ -122,7 +121,7 @@ export const MusicScreen: React.FC = () => {
                 <div
                   key={track.id}
                   onClick={() => playTrack(track)}
-                  className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
+                  className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 min-w-0 ${
                     isThisPlaying
                       ? 'bg-secondary border-primary/50 shadow-md ring-1 ring-primary/30'
                       : 'bg-card border-border hover:border-border-highlight'
@@ -146,13 +145,13 @@ export const MusicScreen: React.FC = () => {
                     </div>
 
                     <div className="min-w-0">
-                      <h4 className={`text-xs font-bold truncate ${isThisPlaying ? 'text-primary' : 'text-foreground'}`}>
+                      <h4 className={`text-xs sm:text-sm font-bold truncate ${isThisPlaying ? 'text-primary' : 'text-foreground'}`}>
                         {track.title}
                       </h4>
-                      <p className="text-[11px] text-muted-foreground truncate">
+                      <p className="text-[11px] sm:text-xs text-muted-foreground truncate">
                         {track.artist}
                       </p>
-                      <span className="inline-block mt-0.5 text-[9px] px-1.5 py-0.5 rounded bg-secondary text-primary/80 font-medium">
+                      <span className="inline-block mt-0.5 text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded bg-secondary text-primary/80 font-medium">
                         {track.genre}
                       </span>
                     </div>
@@ -189,13 +188,13 @@ export const MusicScreen: React.FC = () => {
           )}
         </div>
       ) : (
-        /* Video Showcases Tab */
-        <div className="space-y-4 pt-1">
+        /* Video Showcases Tab (2-column on tablet) */
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pt-1 w-full min-w-0">
           {videoTracks.map(track => (
             <div
               key={track.id}
               onClick={() => setActiveVideoId(track.youtubeId || null)}
-              className="rounded-2xl overflow-hidden border border-border bg-card shadow-lg cursor-pointer group hover:border-primary/50 transition-all"
+              className="rounded-2xl overflow-hidden border border-border bg-card shadow-lg cursor-pointer group hover:border-primary/50 transition-all flex flex-col"
             >
               <div className="relative aspect-video w-full overflow-hidden bg-zinc-950">
                 <img
@@ -207,8 +206,8 @@ export const MusicScreen: React.FC = () => {
 
                 {/* Big Red Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 active:scale-90 transition-all">
-                    <Play className="w-6 h-6 fill-current ml-1" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 active:scale-90 transition-all">
+                    <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-1" />
                   </div>
                 </div>
 
@@ -221,12 +220,12 @@ export const MusicScreen: React.FC = () => {
                 </span>
               </div>
 
-              <div className="p-3.5 flex items-center justify-between">
-                <div>
-                  <h3 className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">
+              <div className="p-3.5 flex items-center justify-between gap-2 mt-auto">
+                <div className="min-w-0">
+                  <h3 className="text-xs sm:text-sm font-bold text-foreground group-hover:text-primary transition-colors truncate">
                     {track.title}
                   </h3>
-                  <p className="text-[11px] text-muted-foreground">{track.artist}</p>
+                  <p className="text-[11px] sm:text-xs text-muted-foreground truncate">{track.artist}</p>
                 </div>
 
                 <button
@@ -234,7 +233,7 @@ export const MusicScreen: React.FC = () => {
                     e.stopPropagation();
                     navigate('/book');
                   }}
-                  className="px-3 py-1.5 rounded-xl bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground text-xs font-bold transition-all border border-primary/20"
+                  className="px-3 py-1.5 rounded-xl bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground text-xs font-bold transition-all border border-primary/20 shrink-0"
                 >
                   Book Band
                 </button>

@@ -20,7 +20,7 @@ export const YouTubeModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="bg-card border border-border rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl relative flex flex-col">
+      <div className="bg-card border border-border rounded-2xl w-full max-w-lg sm:max-w-xl md:max-w-2xl overflow-hidden shadow-2xl relative flex flex-col">
         {/* Modal Top Bar */}
         <div className="p-3.5 border-b border-border flex items-center justify-between bg-secondary/50">
           <div className="flex items-center gap-2">

@@ -8,7 +8,6 @@ import {
   CheckCircle2, 
   Heart, 
   Users, 
-  Sparkles, 
   Music,
   ArrowRight
 } from 'lucide-react';
@@ -34,17 +33,17 @@ export const AboutScreen: React.FC = () => {
   ];
 
   return (
-    <div className="w-full max-w-full min-w-0 flex flex-col space-y-5 px-3.5 pt-3 pb-24 text-foreground overflow-x-hidden">
+    <div className="w-full max-w-full min-w-0 flex flex-col space-y-5 sm:space-y-7 px-3.5 sm:px-6 pt-3 sm:pt-5 pb-24 text-foreground overflow-x-hidden">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-1">
-          <Sparkles className="w-3 h-3" />
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">
+          <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           <span>Our Story</span>
         </div>
-        <h1 className="text-xl font-bold font-display text-foreground">
+        <h1 className="text-xl sm:text-2xl font-bold font-display text-foreground">
           About Avalon Music
         </h1>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           Connecting Houston clients with world-class live musicians since 1993.
         </p>
       </div>
@@ -54,12 +53,12 @@ export const AboutScreen: React.FC = () => {
         <img
           src="/images/about-founder.jpg"
           alt="Avalon Music Founders and Musicians"
-          className="w-full h-44 sm:h-52 object-cover"
+          className="w-full h-44 sm:h-64 md:h-72 object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-        <div className="absolute bottom-3 left-3 right-3 space-y-0.5">
-          <span className="text-[10px] uppercase font-bold text-primary tracking-wide">30+ Years of Excellence</span>
-          <h3 className="text-base font-bold text-white">Musicians Advocating for Musicians & Clients</h3>
+        <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 right-3 sm:right-5 space-y-0.5 sm:space-y-1">
+          <span className="text-[10px] sm:text-xs uppercase font-bold text-primary tracking-wide">30+ Years of Excellence</span>
+          <h3 className="text-base sm:text-xl font-bold text-white">Musicians Advocating for Musicians & Clients</h3>
         </div>
       </div>
 

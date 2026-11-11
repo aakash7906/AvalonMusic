@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { HashRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { AudioProvider } from './context/AudioContext';
 import { DesktopMobileFrame } from './components/layout/DesktopMobileFrame';
@@ -27,8 +27,14 @@ import { Band } from './types';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [selectedBand, setSelectedBand] = useState<Band | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  // On page refresh / initial app load, always start from the splash screen
+  useEffect(() => {
+    navigate('/splash', { replace: true });
+  }, []);
 
   const hideNavigationRoutes = ['/splash', '/onboarding', '/auth'];
   const isNavHidden = hideNavigationRoutes.includes(location.pathname);
@@ -43,8 +49,8 @@ const AppContent: React.FC = () => {
         {/* Top Header (Fixed at top, never scrolls) */}
         {!isNavHidden && <TopHeader onOpenSearch={() => setIsSearchOpen(true)} />}
 
-        {/* Scrollable Content Viewport (Only this area scrolls with scrollbar!) */}
-        <main className="flex-1 w-full overflow-y-auto overflow-x-hidden relative min-w-0 overscroll-contain">
+        {/* Scrollable Content Viewport (Zero scrollbar, smooth touch inertial scrolling) */}
+        <main className="flex-1 w-full overflow-y-auto overflow-x-hidden relative min-w-0 overscroll-contain no-scrollbar scroll-touch">
           <Routes>
             <Route path="/" element={<HomeScreen onSelectBand={setSelectedBand} />} />
             <Route path="/splash" element={<SplashScreen />} />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { Mail, Lock, User, Phone, Eye, EyeOff, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Mail, Lock, User, Phone, Eye, EyeOff, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const AuthScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -74,7 +74,7 @@ export const AuthScreen: React.FC = () => {
       </div>
 
       {/* Auth Card Container */}
-      <div className="my-auto py-4 w-full max-w-sm mx-auto">
+      <div className="my-auto py-4 w-full max-w-sm sm:max-w-md mx-auto">
         {/* Mode Selector Tabs */}
         {mode !== 'forgot' && (
           <div className="flex bg-secondary/80 p-1 rounded-2xl border border-border mb-6">
@@ -318,7 +318,7 @@ export const AuthScreen: React.FC = () => {
           onClick={handleGuest}
           className="w-full py-3 px-4 rounded-2xl bg-secondary/60 hover:bg-secondary text-foreground text-xs font-semibold border border-border transition-colors flex items-center justify-center gap-2 active:scale-95"
         >
-          <Sparkles className="w-3.5 h-3.5 text-primary" />
+          <User className="w-3.5 h-3.5 text-primary" />
           <span>Continue as Guest</span>
         </button>
       </div>

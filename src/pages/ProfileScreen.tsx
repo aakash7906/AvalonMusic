@@ -38,22 +38,22 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
   const favoriteTracks = AVALON_TRACKS.filter(t => favorites.includes(t.id));
 
   return (
-    <div className="w-full max-w-full min-w-0 flex flex-col space-y-4 px-3.5 pt-3 pb-24 text-foreground overflow-x-hidden">
+    <div className="w-full max-w-full min-w-0 flex flex-col space-y-4 sm:space-y-6 px-3.5 sm:px-6 pt-3 sm:pt-5 pb-24 text-foreground overflow-x-hidden">
       {/* User Header Profile Card */}
-      <div className="p-4 rounded-3xl bg-card border border-border shadow-xl space-y-3">
+      <div className="p-4 sm:p-6 rounded-3xl bg-card border border-border shadow-xl space-y-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-amber-300 text-primary-foreground font-black text-lg flex items-center justify-center shadow-lg">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-primary to-amber-300 text-primary-foreground font-black text-lg sm:text-xl flex items-center justify-center shadow-lg">
               {user?.name ? user.name[0].toUpperCase() : 'A'}
             </div>
             <div className="min-w-0">
-              <h2 className="text-base font-bold font-display text-foreground truncate">
+              <h2 className="text-base sm:text-lg font-bold font-display text-foreground truncate">
                 {user?.name || 'Avalon Guest'}
               </h2>
-              <p className="text-xs text-primary font-semibold truncate">
+              <p className="text-xs sm:text-sm text-primary font-semibold truncate">
                 {user?.role || 'Live Music Enthusiast'}
               </p>
-              <p className="text-[11px] text-muted-foreground truncate">{user?.email || 'guest@avalonmusic.com'}</p>
+              <p className="text-[11px] sm:text-xs text-muted-foreground truncate">{user?.email || 'guest@avalonmusic.com'}</p>
             </div>
           </div>
 
@@ -66,16 +66,16 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
                 navigate('/auth');
               }
             }}
-            className="p-2 rounded-xl bg-secondary/80 hover:bg-secondary text-muted-foreground hover:text-foreground text-xs flex items-center gap-1 transition-colors shrink-0"
+            className="p-2 sm:p-2.5 rounded-xl bg-secondary/80 hover:bg-secondary text-muted-foreground hover:text-foreground text-xs flex items-center gap-1.5 transition-colors shrink-0"
           >
             {isLoggedIn ? <LogOut className="w-4 h-4 text-red-400" /> : <User className="w-4 h-4 text-primary" />}
-            <span className="text-[11px]">{isLoggedIn ? 'Sign Out' : 'Sign In'}</span>
+            <span className="text-[11px] sm:text-xs font-semibold">{isLoggedIn ? 'Sign Out' : 'Sign In'}</span>
           </button>
         </div>
 
         {/* Quick event tracker */}
         {user?.eventDate && (
-          <div className="p-2.5 rounded-xl bg-secondary/60 border border-border flex items-center justify-between text-xs">
+          <div className="p-2.5 sm:p-3 rounded-xl bg-secondary/60 border border-border flex items-center justify-between text-xs sm:text-sm">
             <span className="text-muted-foreground">Target Event Date:</span>
             <span className="font-bold text-foreground">{user.eventDate}</span>
           </div>
@@ -83,10 +83,10 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
       </div>
 
       {/* Tabs */}
-      <div className="flex bg-secondary/80 p-1 rounded-2xl border border-border">
+      <div className="flex bg-secondary/80 p-1 rounded-2xl border border-border sm:max-w-lg">
         <button
           onClick={() => setActiveTab('favorites')}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
             activeTab === 'favorites'
               ? 'bg-primary text-primary-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
@@ -97,7 +97,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
         </button>
         <button
           onClick={() => setActiveTab('inquiries')}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
             activeTab === 'inquiries'
               ? 'bg-primary text-primary-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
@@ -108,7 +108,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
         </button>
         <button
           onClick={() => setActiveTab('settings')}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+          className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
             activeTab === 'settings'
               ? 'bg-primary text-primary-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
@@ -138,83 +138,87 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
             </div>
           ) : (
             <>
-              {/* Saved Bands */}
+              {/* Saved Bands (2-column on tablet) */}
               {favoriteBands.length > 0 && (
                 <div className="space-y-2">
                   <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                     Shortlisted Bands ({favoriteBands.length})
                   </h3>
-                  {favoriteBands.map(band => (
-                    <div
-                      key={band.id}
-                      onClick={() => onSelectBand(band)}
-                      className="p-3 rounded-2xl bg-card border border-border flex items-center justify-between gap-3 cursor-pointer hover:border-primary/50 transition-all min-w-0"
-                    >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <img src={band.imageUrl} alt={band.name} className="w-11 h-11 rounded-xl object-cover shrink-0" />
-                        <div className="min-w-0">
-                          <h4 className="text-xs font-bold text-foreground truncate">{band.name}</h4>
-                          <p className="text-[10px] text-muted-foreground truncate">{band.genre} • {band.startingPrice}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 w-full min-w-0">
+                    {favoriteBands.map(band => (
+                      <div
+                        key={band.id}
+                        onClick={() => onSelectBand(band)}
+                        className="p-3 rounded-2xl bg-card border border-border flex items-center justify-between gap-3 cursor-pointer hover:border-primary/50 transition-all min-w-0"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <img src={band.imageUrl} alt={band.name} className="w-11 h-11 rounded-xl object-cover shrink-0" />
+                          <div className="min-w-0">
+                            <h4 className="text-xs font-bold text-foreground truncate">{band.name}</h4>
+                            <p className="text-[10px] text-muted-foreground truncate">{band.genre} • {band.startingPrice}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 shrink-0" onClick={e => e.stopPropagation()}>
+                          <button
+                            onClick={() => navigate(`/book?band=${encodeURIComponent(band.name)}`)}
+                            className="px-3 py-1.5 rounded-xl bg-primary text-primary-foreground text-xs font-bold"
+                          >
+                            Book
+                          </button>
+                          <button
+                            onClick={() => toggleFavorite(band.id)}
+                            className="p-1.5 text-red-400 hover:text-red-300"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
                         </div>
                       </div>
-
-                      <div className="flex items-center gap-1.5 shrink-0" onClick={e => e.stopPropagation()}>
-                        <button
-                          onClick={() => navigate(`/book?band=${encodeURIComponent(band.name)}`)}
-                          className="px-3 py-1.5 rounded-xl bg-primary text-primary-foreground text-xs font-bold"
-                        >
-                          Book
-                        </button>
-                        <button
-                          onClick={() => toggleFavorite(band.id)}
-                          className="p-1.5 text-red-400 hover:text-red-300"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               )}
 
-              {/* Saved Tracks */}
+              {/* Saved Tracks (2-column on tablet) */}
               {favoriteTracks.length > 0 && (
                 <div className="space-y-2 pt-2">
                   <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                     Favorite Tracks ({favoriteTracks.length})
                   </h3>
-                  {favoriteTracks.map(track => (
-                    <div
-                      key={track.id}
-                      onClick={() => playTrack(track)}
-                      className="p-2.5 rounded-2xl bg-card border border-border flex items-center justify-between gap-3 cursor-pointer hover:border-primary/50 transition-all min-w-0"
-                    >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <div className="w-9 h-9 rounded-xl overflow-hidden shrink-0">
-                          <img src={track.coverUrl} alt={track.title} className="w-full h-full object-cover" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 w-full min-w-0">
+                    {favoriteTracks.map(track => (
+                      <div
+                        key={track.id}
+                        onClick={() => playTrack(track)}
+                        className="p-2.5 rounded-2xl bg-card border border-border flex items-center justify-between gap-3 cursor-pointer hover:border-primary/50 transition-all min-w-0"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-9 h-9 rounded-xl overflow-hidden shrink-0">
+                            <img src={track.coverUrl} alt={track.title} className="w-full h-full object-cover" />
+                          </div>
+                          <div className="min-w-0">
+                            <h4 className="text-xs font-bold text-foreground truncate">{track.title}</h4>
+                            <p className="text-[10px] text-muted-foreground truncate">{track.artist}</p>
+                          </div>
                         </div>
-                        <div className="min-w-0">
-                          <h4 className="text-xs font-bold text-foreground truncate">{track.title}</h4>
-                          <p className="text-[10px] text-muted-foreground truncate">{track.artist}</p>
-                        </div>
-                      </div>
 
-                      <div className="flex items-center gap-2 shrink-0" onClick={e => e.stopPropagation()}>
-                        <button
-                          onClick={() => playTrack(track)}
-                          className="p-1.5 rounded-lg bg-primary/20 text-primary"
-                        >
-                          <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                        </button>
-                        <button
-                          onClick={() => toggleFavorite(track.id)}
-                          className="p-1 text-muted-foreground hover:text-foreground"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
+                        <div className="flex items-center gap-2 shrink-0" onClick={e => e.stopPropagation()}>
+                          <button
+                            onClick={() => playTrack(track)}
+                            className="p-1.5 rounded-lg bg-primary/20 text-primary"
+                          >
+                            <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                          </button>
+                          <button
+                            onClick={() => toggleFavorite(track.id)}
+                            className="p-1 text-muted-foreground hover:text-foreground"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               )}
             </>
@@ -222,9 +226,9 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
         </div>
       )}
 
-      {/* Tab 2: Booking Inquiries */}
+      {/* Tab 2: Booking Inquiries (2-column on tablet) */}
       {activeTab === 'inquiries' && (
-        <div className="space-y-3 pt-1">
+        <div className="pt-1">
           {inquiries.length === 0 ? (
             <div className="p-8 rounded-2xl bg-card border border-border text-center space-y-2">
               <CalendarCheck className="w-8 h-8 text-muted-foreground mx-auto opacity-50" />
@@ -240,56 +244,60 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
               </button>
             </div>
           ) : (
-            inquiries.map(item => (
-              <div
-                key={item.id}
-                className="p-4 rounded-2xl bg-card border border-border shadow-lg space-y-2.5"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-muted-foreground uppercase font-bold">
-                    Ref #{item.id}
-                  </span>
-                  <span
-                    className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                      item.status === 'Confirmed'
-                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                        : item.status === 'Reviewing'
-                        ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                        : 'bg-blue-500/20 text-blue-400'
-                    }`}
-                  >
-                    ● {item.status}
-                  </span>
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0">
+              {inquiries.map(item => (
+                <div
+                  key={item.id}
+                  className="p-4 rounded-2xl bg-card border border-border shadow-lg space-y-2.5 flex flex-col justify-between"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono text-muted-foreground uppercase font-bold">
+                        Ref #{item.id}
+                      </span>
+                      <span
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                          item.status === 'Confirmed'
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                            : item.status === 'Reviewing'
+                            ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                            : 'bg-blue-500/20 text-blue-400'
+                        }`}
+                      >
+                        ● {item.status}
+                      </span>
+                    </div>
 
-                <div>
-                  <h4 className="text-sm font-bold text-foreground">{item.bandOrService}</h4>
-                  <p className="text-xs text-muted-foreground">{item.eventType} • {item.venue}</p>
-                </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-foreground">{item.bandOrService}</h4>
+                      <p className="text-xs text-muted-foreground">{item.eventType} • {item.venue}</p>
+                    </div>
 
-                <div className="p-2.5 rounded-xl bg-secondary/60 border border-border text-xs flex justify-between">
-                  <div>
-                    <span className="text-muted-foreground text-[10px]">Date:</span>
-                    <p className="font-semibold text-foreground">{item.eventDate}</p>
+                    <div className="p-2.5 rounded-xl bg-secondary/60 border border-border text-xs flex justify-between">
+                      <div>
+                        <span className="text-muted-foreground text-[10px]">Date:</span>
+                        <p className="font-semibold text-foreground">{item.eventDate}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-muted-foreground text-[10px]">Estimated Range:</span>
+                        <p className="font-bold text-primary">{item.estimatedBudget || '$3,200+'}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-muted-foreground text-[10px]">Estimated Range:</span>
-                    <p className="font-bold text-primary">{item.estimatedBudget || '$3,200+'}</p>
+
+                  <div className="pt-2 border-t border-border flex items-center justify-between text-xs mt-2">
+                    <span className="text-[11px] text-muted-foreground">Created {item.createdAt}</span>
+                    <a
+                      href="tel:8327238886"
+                      className="text-primary hover:underline font-semibold flex items-center gap-1"
+                    >
+                      <Phone className="w-3 h-3" />
+                      <span>Call Concierge</span>
+                    </a>
                   </div>
                 </div>
-
-                <div className="pt-1 flex items-center justify-between text-xs">
-                  <span className="text-[11px] text-muted-foreground">Created {item.createdAt}</span>
-                  <a
-                    href="tel:8327238886"
-                    className="text-primary hover:underline font-semibold flex items-center gap-1"
-                  >
-                    <Phone className="w-3 h-3" />
-                    <span>Call Concierge</span>
-                  </a>
-                </div>
-              </div>
-            ))
+              ))}
+            </div>
           )}
         </div>
       )}
