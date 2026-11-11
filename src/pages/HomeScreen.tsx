@@ -155,8 +155,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectBand }) => {
         <div className="relative w-full rounded-lg overflow-hidden border border-border bg-gradient-to-br from-[#242424] via-card to-[#121212] p-4 sm:p-5 shadow-xl">
           <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-1.5 max-w-md">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider border border-primary/30">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-spotify-green text-primary-foreground text-[10px] font-bold uppercase tracking-wider border border-primary/30">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground animate-pulse" />
                 Houston's #1 Agency • 30+ Years
               </span>
               <h2 className="text-lg sm:text-xl font-black font-display text-white">
