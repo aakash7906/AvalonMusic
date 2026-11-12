@@ -14,7 +14,7 @@ export const Toast: React.FC = () => {
   };
 
   return (
-    <div className="fixed top-14 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm animate-in fade-in slide-in-from-top-4 duration-300 pointer-events-auto">
+    <div className="toast-notification fixed top-14 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm animate-in fade-in slide-in-from-top-4 duration-300 pointer-events-auto">
       <div className="glass-panel-elevated p-3 rounded-2xl flex items-center justify-between gap-3 shadow-2xl border border-primary/30">
         <div className="flex items-center gap-2.5 min-w-0">
           {icons[activeToast.type]}

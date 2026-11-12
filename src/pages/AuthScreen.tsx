@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { Mail, Lock, User, Phone, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../components/ui/Select';
 
 export const AuthScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -207,16 +208,25 @@ export const AuthScreen: React.FC = () => {
               <label className="block text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">
                 I am booking as:
               </label>
-              <select
-                value={role}
-                onChange={e => setRole(e.target.value as any)}
-                className="w-full px-3 py-2.5 bg-secondary/60 border border-border rounded-xl text-xs text-foreground focus:outline-none focus:border-primary transition-colors"
-              >
-                <option value="Bride / Groom">Bride / Groom (Wedding)</option>
-                <option value="Corporate Coordinator">Corporate Event Planner</option>
-                <option value="Event Host">Private Host / Birthday / Gala</option>
-                <option value="Event Planner">Certified Event Coordinator</option>
-              </select>
+              <Select value={role} onValueChange={val => setRole(val as any)}>
+                <SelectTrigger className="py-2.5 bg-secondary/60 border-border text-xs rounded-xl focus:border-primary">
+                  <SelectValue placeholder="Select your booking role..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Bride / Groom" label="Bride / Groom (Wedding)">
+                    Bride / Groom (Wedding)
+                  </SelectItem>
+                  <SelectItem value="Corporate Coordinator" label="Corporate Event Planner">
+                    Corporate Event Planner
+                  </SelectItem>
+                  <SelectItem value="Event Host" label="Private Host / Birthday / Gala">
+                    Private Host / Birthday / Gala
+                  </SelectItem>
+                  <SelectItem value="Event Planner" label="Certified Event Coordinator">
+                    Certified Event Coordinator
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div>

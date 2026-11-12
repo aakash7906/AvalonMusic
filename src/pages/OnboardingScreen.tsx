@@ -45,21 +45,21 @@ export const OnboardingScreen: React.FC = () => {
   return (
     <div className="relative h-full w-full flex flex-col justify-between p-4 sm:p-6 bg-background text-foreground overflow-hidden">
       {/* Top Skip Bar */}
-      <div className="pt-2 flex items-center justify-between z-10">
+      <div className="pt-4 sm:pt-6 flex items-center justify-between z-10">
         <div className="flex items-center gap-2">
         </div>
         <button
           onClick={handleSkip}
-          className="text-xs font-medium text-muted-foreground hover:text-foreground py-1 px-3 rounded-full hover:bg-secondary transition-colors"
+          className="text-xs font-semibold text-muted-foreground hover:text-foreground py-1.5 px-3.5 rounded-full hover:bg-secondary transition-colors"
         >
           Skip
         </button>
       </div>
 
       {/* Center Visual & Carousel Card */}
-      <div className="my-auto py-2 sm:py-4 z-10 flex flex-col items-center max-w-sm sm:max-w-md mx-auto w-full">
+      <div className="my-auto py-2 sm:py-3 z-10 flex flex-col items-center max-w-sm sm:max-w-md mx-auto w-full">
         {/* Visual Hero Card */}
-        <div className="relative w-full aspect-[16/10] max-h-[220px] rounded-2xl sm:rounded-3xl overflow-hidden border border-border shadow-2xl mb-3 sm:mb-6 group">
+        <div className="relative w-full aspect-[16/10] max-h-[220px] rounded-2xl sm:rounded-3xl overflow-hidden border border-border shadow-2xl mb-3 sm:mb-5 group">
           <img
             src={steps[currentStep].image}
             alt={steps[currentStep].title}
@@ -79,7 +79,7 @@ export const OnboardingScreen: React.FC = () => {
       </div>
 
       {/* Bottom Step Indicators & Next Button */}
-      <div className="pb-2 sm:pb-4 z-10 space-y-4 sm:space-y-6 max-w-sm sm:max-w-md mx-auto w-full">
+      <div className="pb-6 sm:pb-8 mb-2 sm:mb-3 z-10 space-y-4 sm:space-y-5 max-w-sm sm:max-w-md mx-auto w-full">
         {/* Dots */}
         <div className="flex items-center justify-center gap-2">
           {steps.map((_, idx) => (

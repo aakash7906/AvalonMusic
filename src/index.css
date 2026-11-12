@@ -439,6 +439,13 @@ main, .scroll-touch {
   height: 1.25rem !important;
 }
 
+/* Desktop Mobile Frame: Scoped Toast Popup Positioning */
+.mobile-frame-view .toast-notification {
+  position: absolute !important;
+  top: 4.75rem !important; /* Shifted down cleanly below TopHeader inside phone simulator */
+  z-index: 60 !important;
+}
+
 .mobile-frame-view .min-h-screen {
   min-height: 100% !important;
   height: 100% !important;
