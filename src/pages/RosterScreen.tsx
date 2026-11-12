@@ -102,11 +102,11 @@ export const RosterScreen: React.FC<RosterScreenProps> = ({ onSelectBand }) => {
               className="rounded-3xl overflow-hidden border border-border bg-card shadow-xl hover:border-primary/50 transition-all cursor-pointer group flex flex-col"
             >
               {/* Image Header */}
-              <div className="relative h-44 w-full overflow-hidden">
+              <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-black/40">
                 <img
                   src={band.imageUrl}
                   alt={band.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full img-band-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-black/20 to-transparent" />
 

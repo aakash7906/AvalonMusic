@@ -94,11 +94,11 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectBand }) => {
     <div className="w-full max-w-full min-w-0 flex flex-col space-y-5 sm:space-y-6 pb-28 text-foreground overflow-x-hidden">
       {/* 1. Dynamic Greeting & Spotify Quick Picks 2x3 Grid */}
       <section className="px-3.5 sm:px-6 pt-3 space-y-3 w-full min-w-0">
-        <div className="flex items-center justify-between">
-          <h1 className="text-xl sm:text-2xl font-black font-display tracking-tight text-white">
+        <div className="flex items-center justify-between gap-2 min-w-0 py-1">
+          <h1 className="text-xl sm:text-2xl font-bold font-sans tracking-tight text-white leading-snug pb-1 truncate home-greeting">
             {greeting}
           </h1>
-          <span className="text-[11px] font-semibold text-primary uppercase tracking-wider">
+          <span className="text-[11px] font-semibold text-primary uppercase tracking-wider shrink-0">
             Houston, TX
           </span>
         </div>
@@ -118,7 +118,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectBand }) => {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-12 h-12 sm:w-14 sm:h-14 object-cover shrink-0"
+                className="w-12 h-12 sm:w-14 sm:h-14 img-avatar-focus shrink-0"
               />
 
               {/* Title & Floating Play Button */}
@@ -222,7 +222,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectBand }) => {
                   <img
                     src={band.imageUrl}
                     alt={band.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full img-avatar-focus group-hover:scale-105 transition-transform duration-300"
                   />
 
                   {/* Hover/Tap Play Button */}
@@ -382,7 +382,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectBand }) => {
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full img-event-focus group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <span className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded text-[9px] font-bold text-amber-300 bg-black/70 border border-white/10">

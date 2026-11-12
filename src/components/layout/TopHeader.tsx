@@ -81,7 +81,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({ onSelectBand }) => {
         {isSearchExpanded ? (
           <div className="w-full flex items-center gap-2 animate-in fade-in duration-200">
             <div className="flex-1 flex items-center gap-2 px-3 py-1.5 sm:py-2 rounded-xl bg-secondary/80 border border-primary/40 shadow-sm focus-within:border-primary transition-all">
-              <Search className="w-4 h-4 text-primary shrink-0" />
+              <Search className="header-action-icon text-primary shrink-0" />
               <input
                 ref={searchInputRef}
                 type="text"
@@ -121,10 +121,10 @@ export const TopHeader: React.FC<TopHeaderProps> = ({ onSelectBand }) => {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => navigate(-1)}
-                    className="p-1.5 sm:p-2 -ml-1 rounded-xl bg-card hover:bg-secondary text-foreground border border-border transition-all active:scale-95 shrink-0"
+                    className="header-action-btn -ml-1 rounded-xl bg-card hover:bg-secondary text-foreground border border-border transition-all active:scale-95 shrink-0 flex items-center justify-center"
                     aria-label="Go back"
                   >
-                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <ChevronLeft className="header-action-icon text-foreground" />
                   </button>
                   <div
                     onClick={() => navigate('/')}
@@ -156,27 +156,27 @@ export const TopHeader: React.FC<TopHeaderProps> = ({ onSelectBand }) => {
             </div>
 
             {/* Right Side: Inline Search Trigger & Notifications */}
-            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               {/* Inline Search Trigger Button */}
               <button
                 onClick={() => setIsSearchExpanded(true)}
                 title="Search bands & tracks"
-                className="p-1.5 sm:p-2 rounded-xl bg-secondary/70 hover:bg-secondary text-foreground border border-border transition-colors active:scale-95 flex items-center justify-center"
+                className="header-action-btn rounded-xl bg-secondary/70 hover:bg-secondary text-foreground border border-border transition-all active:scale-95 flex items-center justify-center group"
                 aria-label="Open inline search"
               >
-                <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-foreground" />
+                <Search className="header-action-icon text-foreground/90 group-hover:text-foreground transition-transform group-hover:scale-105" />
               </button>
 
               {/* Notification Bell */}
               <div className="relative">
                 <button
                   onClick={() => setShowNotifications(!showNotifications)}
-                  className="p-1.5 sm:p-2 rounded-xl bg-secondary/70 hover:bg-secondary text-foreground border border-border transition-all active:scale-95 relative"
+                  className="header-action-btn rounded-xl bg-secondary/70 hover:bg-secondary text-foreground border border-border transition-all active:scale-95 flex items-center justify-center relative group"
                   aria-label="Notifications"
                 >
-                  <Bell className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-foreground" />
+                  <Bell className="header-action-icon text-foreground/90 group-hover:text-foreground transition-transform group-hover:scale-105" />
                   {unreadCount > 0 && (
-                    <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-primary text-primary-foreground text-[9px] font-bold flex items-center justify-center animate-pulse">
+                    <span className="absolute -top-1 -right-1 min-w-[17px] h-[17px] px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-bold flex items-center justify-center shadow-md animate-pulse">
                       {unreadCount}
                     </span>
                   )}
@@ -262,7 +262,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({ onSelectBand }) => {
                         className="p-2 rounded-xl bg-secondary/50 hover:bg-secondary border border-border flex items-center justify-between cursor-pointer transition-colors active:scale-[0.99]"
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <img src={b.imageUrl} alt={b.name} className="w-9 h-9 rounded-lg object-cover shrink-0" />
+                          <img src={b.imageUrl} alt={b.name} className="w-9 h-9 rounded-lg img-avatar-focus shrink-0" />
                           <div className="min-w-0">
                             <h4 className="font-bold text-xs text-foreground truncate">{b.name}</h4>
                             <p className="text-[10px] text-muted-foreground truncate">{b.genre}</p>

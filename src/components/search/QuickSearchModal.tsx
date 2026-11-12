@@ -93,7 +93,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
                       className="p-2 rounded-xl bg-secondary/50 hover:bg-secondary border border-border flex items-center justify-between cursor-pointer transition-colors"
                     >
                       <div className="flex items-center gap-2 min-w-0">
-                        <img src={b.imageUrl} alt={b.name} className="w-8 h-8 rounded-lg object-cover shrink-0" />
+                        <img src={b.imageUrl} alt={b.name} className="w-8 h-8 rounded-lg img-avatar-focus shrink-0" />
                         <div className="min-w-0">
                           <h4 className="font-bold text-foreground truncate">{b.name}</h4>
                           <p className="text-[10px] text-muted-foreground truncate">{b.genre}</p>

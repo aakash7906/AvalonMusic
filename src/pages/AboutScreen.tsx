@@ -53,7 +53,7 @@ export const AboutScreen: React.FC = () => {
         <img
           src="/images/about-founder.jpg"
           alt="Avalon Music Founders and Musicians"
-          className="w-full h-44 sm:h-64 md:h-72 object-cover"
+          className="w-full h-56 sm:h-64 md:h-72 img-hero-focus"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
         <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 right-3 sm:right-5 space-y-0.5 sm:space-y-1">

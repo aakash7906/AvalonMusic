@@ -79,11 +79,11 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({ band, onClose 
         {/* Scrollable Content Body (Hidden scrollbar with touch inertial scrolling) */}
         <div className="overflow-y-auto flex-1 pb-24 no-scrollbar scroll-touch">
           {/* Hero Cover */}
-          <div className="relative h-60 w-full overflow-hidden">
+          <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-black/40">
             <img
               src={band.heroImageUrl || band.imageUrl}
               alt={band.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full img-band-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-black/30 to-transparent" />
 

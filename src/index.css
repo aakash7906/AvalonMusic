@@ -281,6 +281,38 @@ main, .scroll-touch {
 }
 
 /* Typography overrides for compact phone screen */
+.home-greeting {
+  font-family: var(--font-family-body) !important;
+  line-height: 1.4 !important;
+  padding-bottom: 4px !important;
+  overflow: visible !important;
+}
+
+/* ==========================================================================
+   SMART FOCAL POINTS FOR BAND & PORTRAIT PHOTOGRAPHY
+   Prevents heads, faces, and musical instruments from being chopped off
+   by centering crops on the upper 12-18% of group photos.
+   ========================================================================== */
+.img-band-cover {
+  object-fit: cover !important;
+  object-position: center 15% !important;
+}
+
+.img-avatar-focus {
+  object-fit: cover !important;
+  object-position: center 15% !important;
+}
+
+.img-hero-focus {
+  object-fit: cover !important;
+  object-position: center 15% !important;
+}
+
+.img-event-focus {
+  object-fit: cover !important;
+  object-position: center 18% !important;
+}
+
 .mobile-frame-view .sm\:text-3xl {
   font-size: 1.5rem !important;
   line-height: 2rem !important;
@@ -288,7 +320,7 @@ main, .scroll-touch {
 
 .mobile-frame-view .sm\:text-2xl {
   font-size: 1.25rem !important;
-  line-height: 1.75rem !important;
+  line-height: 1.85rem !important;
 }
 
 .mobile-frame-view .sm\:text-xl {
@@ -364,6 +396,88 @@ main, .scroll-touch {
 
 .mobile-frame-view .sm\:hidden {
   display: block !important;
+}
+
+/* Ensure full-screen flows (Onboarding, Splash, Auth) fit perfectly inside Desktop Mobile Frame and real mobile views */
+.mobile-frame-view main,
+.mobile-only-view main {
+  height: 100%;
+}
+
+/* Header Action Buttons & Icons: Crisp, Responsive Sizing */
+.header-action-btn {
+  width: 2.25rem;  /* 36px on mobile */
+  height: 2.25rem; /* 36px on mobile */
+}
+
+@media (min-width: 640px) {
+  .header-action-btn {
+    width: 2.5rem;  /* 40px on tablet/desktop */
+    height: 2.5rem; /* 40px on tablet/desktop */
+  }
+}
+
+.mobile-frame-view .header-action-btn {
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+}
+
+.header-action-icon {
+  width: 1.25rem !important;  /* 20px */
+  height: 1.25rem !important; /* 20px */
+}
+
+@media (min-width: 640px) {
+  .header-action-icon {
+    width: 1.35rem !important; /* ~22px on tablet/desktop */
+    height: 1.35rem !important;
+  }
+}
+
+.mobile-frame-view .header-action-icon {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+}
+
+.mobile-frame-view .min-h-screen {
+  min-height: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+}
+
+.mobile-frame-view .min-h-screen.p-6 {
+  padding: 1rem 1.25rem !important;
+}
+
+.mobile-frame-view .min-h-screen .aspect-\[4\/3\] {
+  aspect-ratio: 16 / 10 !important;
+  max-height: 220px !important;
+}
+
+.mobile-frame-view .min-h-screen .mb-6 {
+  margin-bottom: 0.75rem !important;
+}
+
+.mobile-frame-view .min-h-screen .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.875rem !important;
+}
+
+.mobile-frame-view .min-h-screen .my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+.mobile-frame-view .min-h-screen .py-4 {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.mobile-frame-view .min-h-screen h2 {
+  font-size: 1.25rem !important;
+  line-height: 1.6rem !important;
 }
 
 /* Utility Animations */

@@ -35,6 +35,7 @@ const AppContent: React.FC = () => {
 
   const hideNavigationRoutes = ['/splash', '/onboarding', '/auth'];
   const isNavHidden = hideNavigationRoutes.includes(location.pathname);
+  const isNoScrollScreen = location.pathname === '/splash' || location.pathname === '/onboarding';
 
   return (
     <DesktopMobileFrame>
@@ -46,8 +47,12 @@ const AppContent: React.FC = () => {
         {/* Top Header with Inline Search (Fixed at top, never scrolls) */}
         {!isNavHidden && <TopHeader onSelectBand={setSelectedBand} />}
 
-        {/* Scrollable Content Viewport (Zero scrollbar, smooth touch inertial scrolling) */}
-        <main className="flex-1 w-full overflow-y-auto overflow-x-hidden relative min-w-0 overscroll-contain no-scrollbar scroll-touch">
+        {/* Scrollable Content Viewport (Fixed full-screen for splash/onboarding, smooth scrolling for other pages) */}
+        <main className={`flex-1 w-full relative min-w-0 min-h-0 ${
+          isNoScrollScreen 
+            ? 'h-full overflow-hidden' 
+            : 'overflow-y-auto overflow-x-hidden overscroll-contain no-scrollbar scroll-touch'
+        }`}>
           <Routes>
             <Route path="/" element={<HomeScreen onSelectBand={setSelectedBand} />} />
             <Route path="/splash" element={<SplashScreen />} />

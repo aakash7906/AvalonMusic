@@ -39,7 +39,7 @@ export const DesktopMobileFrame: React.FC<DesktopMobileFrameProps> = ({ children
   };
 
   return (
-    <div className="w-full h-full min-h-screen bg-background text-foreground flex flex-col min-w-0 max-w-full overflow-hidden">
+    <div className="w-full h-full min-h-[100dvh] max-h-[100dvh] bg-background text-foreground flex flex-col min-w-0 max-w-full overflow-hidden">
       {/* =========================================================================
           1. NATIVE MOBILE & TABLET VIEWPORT (<= 960px)
           Seamlessly adapts to phone and tablet viewports up to 960px

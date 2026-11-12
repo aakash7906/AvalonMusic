@@ -34,7 +34,7 @@ export const SplashScreen: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col justify-between p-6 bg-gradient-to-b from-background via-card to-background text-foreground overflow-hidden">
+    <div className="relative h-full w-full flex flex-col justify-between p-6 bg-gradient-to-b from-background via-card to-background text-foreground overflow-hidden">
       {/* Background radial glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-primary/15 blur-[90px] pointer-events-none" />
       {/* Center Brand Identity */}

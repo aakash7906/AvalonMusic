@@ -149,7 +149,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSelectBand }) =>
                         className="p-3 rounded-2xl bg-card border border-border flex items-center justify-between gap-3 cursor-pointer hover:border-primary/50 transition-all min-w-0"
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <img src={band.imageUrl} alt={band.name} className="w-11 h-11 rounded-xl object-cover shrink-0" />
+                          <img src={band.imageUrl} alt={band.name} className="w-11 h-11 rounded-xl img-avatar-focus shrink-0" />
                           <div className="min-w-0">
                             <h4 className="text-xs font-bold text-foreground truncate">{band.name}</h4>
                             <p className="text-[10px] text-muted-foreground truncate">{band.genre} • {band.startingPrice}</p>

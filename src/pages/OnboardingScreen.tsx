@@ -43,7 +43,7 @@ export const OnboardingScreen: React.FC = () => {
   const StepIcon = steps[currentStep].icon;
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col justify-between p-6 bg-background text-foreground overflow-hidden">
+    <div className="relative h-full w-full flex flex-col justify-between p-4 sm:p-6 bg-background text-foreground overflow-hidden">
       {/* Top Skip Bar */}
       <div className="pt-2 flex items-center justify-between z-10">
         <div className="flex items-center gap-2">
@@ -57,20 +57,20 @@ export const OnboardingScreen: React.FC = () => {
       </div>
 
       {/* Center Visual & Carousel Card */}
-      <div className="my-auto py-4 z-10 flex flex-col items-center max-w-sm sm:max-w-md mx-auto w-full">
+      <div className="my-auto py-2 sm:py-4 z-10 flex flex-col items-center max-w-sm sm:max-w-md mx-auto w-full">
         {/* Visual Hero Card */}
-        <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border border-border shadow-2xl mb-6 group">
+        <div className="relative w-full aspect-[16/10] max-h-[220px] rounded-2xl sm:rounded-3xl overflow-hidden border border-border shadow-2xl mb-3 sm:mb-6 group">
           <img
             src={steps[currentStep].image}
             alt={steps[currentStep].title}
-            className="w-full h-full object-cover transition-all duration-500 transform group-hover:scale-105"
+            className="w-full h-full img-band-cover transition-all duration-500 transform group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
 
         {/* Carousel Text Content */}
-        <div className="text-center px-2 space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-foreground leading-tight">
+        <div className="text-center px-2 space-y-1.5 sm:space-y-2">
+          <h2 className="text-xl sm:text-2xl font-bold font-display text-foreground leading-tight">
             {steps[currentStep].title}
           </h2>
           <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto">
@@ -79,7 +79,7 @@ export const OnboardingScreen: React.FC = () => {
       </div>
 
       {/* Bottom Step Indicators & Next Button */}
-      <div className="pb-4 z-10 space-y-6 max-w-sm sm:max-w-md mx-auto w-full">
+      <div className="pb-2 sm:pb-4 z-10 space-y-4 sm:space-y-6 max-w-sm sm:max-w-md mx-auto w-full">
         {/* Dots */}
         <div className="flex items-center justify-center gap-2">
           {steps.map((_, idx) => (

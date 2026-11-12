@@ -38,11 +38,11 @@ export const EventsScreen: React.FC = () => {
               className="rounded-3xl overflow-hidden border border-border bg-card shadow-xl flex flex-col group hover:border-primary/40 transition-all"
             >
               {/* Event Image */}
-              <div className="relative h-40 w-full overflow-hidden">
+              <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-black/40">
                 <img
                   src={event.coverImage}
                   alt={event.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full img-event-focus group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-black/30 to-transparent" />
 
