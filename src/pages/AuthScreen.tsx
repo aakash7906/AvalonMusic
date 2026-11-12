@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { Mail, Lock, User, Phone, Eye, EyeOff, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Mail, Lock, User, Phone, Eye, EyeOff, ArrowRight } from 'lucide-react';
 
 export const AuthScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -303,14 +303,6 @@ export const AuthScreen: React.FC = () => {
           <User className="w-3.5 h-3.5 text-primary" />
           <span>Continue as Guest</span>
         </button>
-      </div>
-
-      {/* Trust Footer */}
-      <div className="pb-4 text-center">
-        <div className="flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground">
-          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-          <span>Houston's #1 Live Music Agency Since 1993</span>
-        </div>
       </div>
     </div>
   );
